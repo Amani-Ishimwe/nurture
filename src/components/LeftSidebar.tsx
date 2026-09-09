@@ -10,7 +10,8 @@ import {
   Flame,
   CheckCircle2,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Settings
 } from 'lucide-react'
 import { CommunityMinistry, NavTab, Author } from '../types/sprint'
 import { mockMinistries } from '../data/mockSprintData'
@@ -37,10 +38,11 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
   const [isCommunityDropdownOpen, setIsCommunityDropdownOpen] = useState(false)
 
   const navItems: Array<{ id: NavTab; label: string; icon: React.ReactNode; badge?: string; adminOnly?: boolean }> = [
-    { id: 'feed',   label: 'Current Sprint', icon: <Compass className="w-4 h-4" /> },
-    { id: 'vault',  label: 'Vault & Archives', icon: <Archive className="w-4 h-4" /> },
-    { id: 'roster', label: 'Team Roster',     icon: <Users className="w-4 h-4" /> },
-    { id: 'admin',  label: 'Admin Studio',    icon: <Sliders className="w-4 h-4" />, badge: 'Admin', adminOnly: true },
+    { id: 'feed', label: 'Current Sprint', icon: <Compass className="w-4 h-4" /> },
+    { id: 'vault', label: 'Vault & Archives', icon: <Archive className="w-4 h-4" /> },
+    { id: 'roster', label: 'Team Roster', icon: <Users className="w-4 h-4" /> },
+    { id: 'admin', label: 'Admin Studio', icon: <Sliders className="w-4 h-4" />, badge: 'Admin', adminOnly: true },
+    { id: 'settings', label: 'Settings', icon: <Settings className="w-4 h-4" /> },
   ]
 
   return (
@@ -111,7 +113,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 px-3 mb-1 block">
             Workspace
           </span>
-          {navItems.map((item) => {
+          {Array.from(new Map(navItems.map((item) => [item.id, item])).values()).map((item) => {
             const isActive = currentTab === item.id
             if (item.adminOnly && !isAdminMode) return null
             return (
@@ -170,42 +172,55 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         {/* Toggle Admin/Member Mode Button */}
         <button
           onClick={onToggleAdminMode}
-          className={`w-full px-2.5 py-1.5 rounded-lg text-[11px] font-medium flex items-center justify-between transition-colors border ${
+          className={`w-full px-2.5 py-1.5 rounded-lg text-[11px] font-medium flex items-center justify-between transition-colors border cursor-pointer ${
             isAdminMode
-              ? 'bg-orange-50 text-orange-900 border-orange-200 hover:bg-orange-100/70'
-              : 'bg-neutral-100 text-neutral-600 border-neutral-200 hover:bg-neutral-200/60'
+              ? 'bg-orange-50 text-orange-900 border-orange-300 hover:bg-orange-100/80'
+              : 'bg-neutral-100 text-neutral-600 border-neutral-300 hover:bg-neutral-200/60'
           }`}
         >
           <div className="flex items-center gap-1.5">
             <Shield className="w-3.5 h-3.5 text-orange-600" />
-            <span>{isAdminMode ? 'Admin Mode: ON' : 'Member View'}</span>
+            <span>{isAdminMode ? 'Owner: Admin Mode' : 'Member View'}</span>
           </div>
           <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-white/80 border border-neutral-200 text-neutral-600">
             Toggle
           </span>
         </button>
 
-        {/* User Card */}
-        <div className="p-2 rounded-lg bg-white/70 backdrop-blur-md border border-neutral-300 flex items-center justify-between shadow-2xs">
+        {/* User Card (Interactive, opens Settings) */}
+        <button
+          type="button"
+          onClick={() => onSelectTab('settings')}
+          className="w-full text-left p-2 rounded-lg bg-white/70 backdrop-blur-md border border-neutral-300 hover:border-orange-300 hover:bg-white flex items-center justify-between shadow-2xs transition-all cursor-pointer group"
+          title="Click to manage profile and workspace settings"
+        >
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="relative">
+            <div className="relative shrink-0">
               <img
                 src={currentUser.avatar}
                 alt={currentUser.name}
-                className="w-8 h-8 rounded-full object-cover border border-neutral-200 shrink-0"
+                className="w-8 h-8 rounded-full object-cover border border-neutral-300 group-hover:border-orange-400 transition-colors shrink-0"
               />
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
             </div>
-            <div className="min-w-0">
-              <p className="text-xs font-bold text-neutral-900 truncate leading-tight flex items-center gap-1">
-                {currentUser.name}
-              </p>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs font-bold text-neutral-900 truncate leading-tight group-hover:text-orange-950 transition-colors">
+                  {currentUser.name}
+                </p>
+                {currentUser.isWorkspaceOwner && (
+                  <span className="px-1 py-0.2 rounded text-[8px] font-bold uppercase tracking-wider bg-orange-100 text-orange-800 border border-orange-200 shrink-0">
+                    Owner
+                  </span>
+                )}
+              </div>
               <p className="text-[10px] text-neutral-500 font-medium truncate">
                 {currentUser.role}
               </p>
             </div>
           </div>
-        </div>
+          <Settings className="w-3.5 h-3.5 text-neutral-400 group-hover:text-orange-600 transition-colors shrink-0 ml-1" />
+        </button>
 
         {/* Micro footer links */}
         <div className="px-1 text-[10px] text-neutral-400 flex items-center justify-between">

@@ -2,7 +2,38 @@ export type ContentType = 'scripture' | 'reflection' | 'media' | 'voice'
 
 export type BibleVersion = 'NIV' | 'ESV' | 'KJV' | 'NLT' | 'CSB' | 'NASB'
 
-export type NavTab = 'feed' | 'vault' | 'roster' | 'admin'
+export type NavTab = 'feed' | 'vault' | 'roster' | 'admin' | 'settings'
+
+export interface UserProfileSettings {
+  name: string
+  role: string
+  email: string
+  avatar: string
+  team: string
+  bio: string
+  preferredBible: BibleVersion
+  reminderTime: string
+  emailDigest: boolean
+  soundEnabled: boolean
+  streakGoalDays: number
+  isWorkspaceOwner?: boolean
+}
+
+export interface WorkspaceConfig {
+  churchName: string
+  slug: string
+  themeColor: string
+  defaultMeetingUrl: string
+  sprintCadenceDays: number
+  autoArchiveToVault: boolean
+  allowAnonymousReflections: boolean
+  requireAdminApproval: boolean
+  primaryMinistryFocus: string
+  ownerId: string
+  ownerName: string
+  ownerRole: string
+  ownerEmail: string
+}
 
 export interface Author {
   id: string
@@ -11,6 +42,7 @@ export interface Author {
   avatar: string
   team: string
   isCurrentUser?: boolean
+  isWorkspaceOwner?: boolean
   streakDays?: number
   checkinsCount?: number
 }

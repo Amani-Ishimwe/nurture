@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import React, { useState, useMemo } from 'react'
 import {
   currentSprint as defaultSprint,
@@ -18,6 +18,9 @@ import {
   CommunityMinistry,
   PinnedResource,
   AnnouncementBanner,
+  Author,
+  UserProfileSettings,
+  WorkspaceConfig,
 } from '../types/sprint'
 import { LeftSidebar } from '../components/LeftSidebar'
 import { RightUtilityRail } from '../components/RightUtilityRail'
@@ -27,6 +30,7 @@ import { ReflectionCard } from '../components/ReflectionCard'
 import { AdminCommandCenter } from '../components/AdminCommandCenter'
 import { VaultView } from '../components/VaultView'
 import { TeamRosterView } from '../components/TeamRosterView'
+import { SettingsView } from '../components/SettingsView'
 import { MediaModal } from '../components/MediaModal'
 import {
   Megaphone,
@@ -48,7 +52,8 @@ import {
   Calendar,
   ArrowLeft,
   Clock,
-  Archive
+  Archive,
+  Settings
 } from 'lucide-react'
 
 export const Route = createFileRoute('/')({
@@ -60,6 +65,48 @@ function NurtureApp() {
   const [currentTab, setCurrentTab] = useState<NavTab>('feed')
   const [selectedMinistry, setSelectedMinistry] = useState<CommunityMinistry>(mockMinistries[0])
   const [isAdminMode, setIsAdminMode] = useState<boolean>(true)
+
+  // User Profile & Workspace Settings State
+  const [userProfile, setUserProfile] = useState<UserProfileSettings>({
+    name: currentUserChiefUsher.name,
+    role: currentUserChiefUsher.role,
+    email: 'marcus.vance@gracecity.org',
+    avatar: currentUserChiefUsher.avatar,
+    team: currentUserChiefUsher.team,
+    bio: 'Serving in the house of God with humility, joy, and excellence. Passionate about creating an atmosphere where every soul feels welcomed as an honored guest.',
+    preferredBible: 'ESV',
+    reminderTime: '07:00',
+    emailDigest: true,
+    soundEnabled: true,
+    streakGoalDays: 7,
+    isWorkspaceOwner: true,
+  })
+
+  const [workspaceConfig, setWorkspaceConfig] = useState<WorkspaceConfig>({
+    churchName: 'Grace City Community Church',
+    slug: 'gracecity',
+    themeColor: '#ea580c',
+    defaultMeetingUrl: 'https://meet.google.com/nurture-ushers-sync',
+    sprintCadenceDays: 7,
+    autoArchiveToVault: true,
+    allowAnonymousReflections: true,
+    requireAdminApproval: false,
+    primaryMinistryFocus: 'Excellence in hospitality, sanctuary stewardship, and prayerful servant leadership.',
+    ownerId: currentUserChiefUsher.id,
+    ownerName: currentUserChiefUsher.name,
+    ownerRole: currentUserChiefUsher.role,
+    ownerEmail: 'marcus.vance@gracecity.org',
+  })
+
+  // Dynamic Current User derived from UserProfile
+  const currentUser: Author = useMemo(() => ({
+    ...currentUserChiefUsher,
+    name: userProfile.name,
+    role: userProfile.role,
+    avatar: userProfile.avatar,
+    team: userProfile.team,
+    isWorkspaceOwner: userProfile.isWorkspaceOwner ?? true,
+  }), [userProfile])
 
   // Sprint & Content Data State
   const [activeSprint, setActiveSprint] = useState<Sprint>(defaultSprint)
@@ -398,7 +445,13 @@ function NurtureApp() {
             </div>
           ) : (
             <div className="hidden md:flex items-center text-xs font-semibold text-neutral-600">
-              {currentTab === 'vault' ? 'Archives & Vault' : currentTab === 'roster' ? 'Team Directory' : 'Admin Command Center'}
+              {currentTab === 'vault'
+                ? 'Archives & Vault'
+                : currentTab === 'roster'
+                  ? 'Team Directory'
+                  : currentTab === 'admin'
+                    ? 'Admin Command Center'
+                    : 'Settings & Preferences'}
             </div>
           )}
 
@@ -431,15 +484,23 @@ function NurtureApp() {
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-orange-600 ring-2 ring-white" />
             </button>
 
-            {/* Profile Avatar */}
-            <div className="relative">
+            {/* Profile Avatar (Click to open Settings) */}
+            <button
+              type="button"
+              onClick={() => {
+                setCurrentTab('settings')
+                showToast('Opening Personal Profile & Settings')
+              }}
+              className="relative cursor-pointer group"
+              title="Manage Profile & Settings"
+            >
               <img
-                src={currentUserChiefUsher.avatar}
-                alt={currentUserChiefUsher.name}
-                className="w-8 h-8 rounded-full object-cover border border-neutral-300 ring-2 ring-neutral-200 hover:ring-orange-300 transition-all cursor-pointer"
+                src={currentUser.avatar}
+                alt={currentUser.name}
+                className="w-8 h-8 rounded-full object-cover border border-neutral-300 ring-2 ring-neutral-200 group-hover:ring-orange-300 transition-all cursor-pointer"
               />
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
-            </div>
+            </button>
           </div>
 
         </div>
@@ -478,7 +539,7 @@ function NurtureApp() {
         <LeftSidebar
           currentTab={currentTab}
           onSelectTab={setCurrentTab}
-          currentUser={currentUserChiefUsher}
+          currentUser={currentUser}
           isAdminMode={isAdminMode}
           onToggleAdminMode={() => {
             setIsAdminMode(!isAdminMode)
@@ -576,7 +637,7 @@ function NurtureApp() {
 
               {/* 2. Inline Peerlist-style Reflection Composer (Top) */}
               <ReflectionComposer
-                currentUser={currentUserChiefUsher}
+                currentUser={currentUser}
                 onAddReflection={handleAddReflection}
               />
 
@@ -699,6 +760,26 @@ function NurtureApp() {
               onTogglePinCard={handleTogglePinCard}
               onToggleHideCard={handleToggleHideCard}
               onArchiveCurrentSprint={handleArchiveCurrentSprint}
+              onShowToast={showToast}
+            />
+          )}
+
+          {/* VIEW: SETTINGS */}
+          {currentTab === 'settings' && (
+            <SettingsView
+              profile={userProfile}
+              workspace={workspaceConfig}
+              isAdminMode={isAdminMode}
+              onToggleAdminMode={() => {
+                setIsAdminMode(!isAdminMode)
+                showToast(isAdminMode ? 'Switched to Member View' : 'Workspace Owner (Admin) Access Restored')
+              }}
+              onUpdateProfile={(updated) => {
+                setUserProfile((prev) => ({ ...prev, ...updated }))
+              }}
+              onUpdateWorkspace={(updated) => {
+                setWorkspaceConfig((prev) => ({ ...prev, ...updated }))
+              }}
               onShowToast={showToast}
             />
           )}

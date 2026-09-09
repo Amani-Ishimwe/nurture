@@ -20,7 +20,8 @@ import {
   AlertTriangle,
   Users,
   Layers,
-  FileText
+  FileText,
+  Crown
 } from 'lucide-react'
 import { Sprint, ReflectionCardItem, AnnouncementBanner } from '../types/sprint'
 
@@ -158,10 +159,11 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
       <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-orange-50 text-orange-800 border border-orange-200">
-              Chief Usher Access
+            <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-orange-50 text-orange-800 border border-orange-200 flex items-center gap-1">
+              <Crown className="w-3 h-3 text-orange-600" />
+              Workspace Owner & Admin Access
             </span>
-            <span className="text-xs text-neutral-400 font-mono">Restricted Panel</span>
+            <span className="text-xs text-neutral-400 font-mono">Restricted Command Panel</span>
           </div>
           <h2 className="text-xl font-bold text-neutral-900 mt-1">Admin Command Center</h2>
           <p className="text-xs text-neutral-500">

@@ -45,6 +45,7 @@ export const currentUserChiefUsher: Author = {
   avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80',
   team: 'Usher & Hospitality',
   isCurrentUser: true,
+  isWorkspaceOwner: true,
   streakDays: 6,
   checkinsCount: 18,
 }

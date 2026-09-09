@@ -7,7 +7,8 @@ import {
   CheckCircle2,
   Mail,
   UserCheck,
-  Award
+  Award,
+  Crown
 } from 'lucide-react'
 import { Author } from '../types/sprint'
 import { mockAuthors } from '../data/mockSprintData'
@@ -69,11 +70,15 @@ export const TeamRosterView: React.FC = () => {
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5">
                   <h4 className="text-sm font-bold text-neutral-900 truncate">{member.name}</h4>
-                  {member.isCurrentUser && (
+                  {member.isWorkspaceOwner ? (
+                    <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-orange-600 text-white shadow-2xs flex items-center gap-1">
+                      <Crown className="w-2.5 h-2.5" /> Owner & Admin
+                    </span>
+                  ) : member.isCurrentUser ? (
                     <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-orange-100 text-orange-800 border border-orange-200">
                       You
                     </span>
-                  )}
+                  ) : null}
                 </div>
                 <p className="text-xs text-neutral-500 font-medium truncate">{member.role}</p>
                 <span className="text-[10px] text-neutral-400 block truncate">{member.team}</span>
