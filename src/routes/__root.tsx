@@ -1,4 +1,4 @@
-﻿/// <reference types="vite/client" />
+/// <reference types="vite/client" />
 import {
   HeadContent,
   Outlet,
@@ -55,7 +55,7 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-[#fafafa] text-neutral-900 selection:bg-orange-100 selection:text-orange-900 font-sans">
+      <body className="min-h-screen bg-[#fafafa] text-neutral-900 selection:bg-neutral-900 selection:text-white font-sans">
         <Outlet />
         <Scripts />
       </body>

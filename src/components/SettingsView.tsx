@@ -183,7 +183,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <User className="w-3.5 h-3.5 text-orange-600" />
+          <User className={`w-3.5 h-3.5 ${activeSection === 'profile' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Personal Profile</span>
         </button>
 
@@ -196,7 +196,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <Building2 className="w-3.5 h-3.5 text-orange-600" />
+          <Building2 className={`w-3.5 h-3.5 ${activeSection === 'workspace' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Workspace Settings</span>
         </button>
 
@@ -209,7 +209,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <Bell className="w-3.5 h-3.5 text-orange-600" />
+          <Bell className={`w-3.5 h-3.5 ${activeSection === 'notifications' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Devotion & Alerts</span>
         </button>
       </div>
@@ -272,7 +272,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                         type="button"
                         onClick={() => setAvatar(url)}
                         className={`w-8 h-8 rounded-full overflow-hidden border-2 transition-transform cursor-pointer shrink-0 ${
-                          avatar === url ? 'border-orange-600 scale-105 ring-2 ring-orange-200' : 'border-neutral-200 hover:scale-105'
+                          avatar === url ? 'border-neutral-900 scale-105 ring-2 ring-neutral-300' : 'border-neutral-200 hover:scale-105'
                         }`}
                       >
                         <img src={url} alt="preset" className="w-full h-full object-cover" />
@@ -286,7 +286,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                       value={avatar}
                       onChange={(e) => setAvatar(e.target.value)}
                       placeholder="Or paste custom image URL..."
-                      className="w-full max-w-sm px-3 py-1.5 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-orange-500 shadow-2xs"
+                      className="w-full max-w-sm px-3 py-1.5 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 shadow-2xs"
                     />
                   </div>
                 </div>
@@ -303,7 +303,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
                   required
                 />
               </div>
@@ -316,7 +316,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   type="text"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
                   required
                 />
               </div>
@@ -332,7 +332,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
                   required
                 />
               </div>
@@ -344,7 +344,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 <select
                   value={team}
                   onChange={(e) => setTeam(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
                 >
                   <option value="Main Sanctuary Ushers">Main Sanctuary Ushers</option>
                   <option value="First Impressions & Greeters">First Impressions & Greeters</option>
@@ -365,7 +365,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 placeholder="Share your spiritual encouragement, heart for God's house, or ministry focus..."
-                className="w-full p-3 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 leading-relaxed shadow-2xs"
+                className="w-full p-3 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 leading-relaxed shadow-2xs"
               />
             </div>
 
@@ -378,7 +378,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 <select
                   value={preferredBible}
                   onChange={(e) => setPreferredBible(e.target.value as BibleVersion)}
-                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
                 >
                   <option value="ESV">ESV — English Standard Version</option>
                   <option value="NIV">NIV — New International Version</option>
@@ -396,7 +396,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 <select
                   value={streakGoalDays}
                   onChange={(e) => setStreakGoalDays(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
                 >
                   <option value={7}>7 Days / Week (Full Sprint Cadence)</option>
                   <option value={5}>5 Days / Week (Weekday Focused)</option>
@@ -408,7 +408,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             <div className="pt-3 border-t border-neutral-200 flex justify-end">
               <button
                 type="submit"
-                className="px-5 py-2 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-5 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <Save className="w-3.5 h-3.5" />
                 <span>Save Profile Changes</span>
@@ -459,7 +459,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 <button
                   type="button"
                   onClick={onToggleAdminMode}
-                  className="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-semibold shadow-xs transition-colors shrink-0 cursor-pointer flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-semibold shadow-xs transition-colors shrink-0 cursor-pointer flex items-center gap-1.5"
                 >
                   <Shield className="w-3.5 h-3.5" />
                   <span>Switch to Admin Mode</span>
@@ -486,7 +486,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   type="text"
                   value={churchName}
                   onChange={(e) => setChurchName(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                  className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
                   required
                 />
               </div>
@@ -503,7 +503,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                     type="text"
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
-                    className="w-full px-3 py-2 rounded-r-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs font-mono"
+                    className="w-full px-3 py-2 rounded-r-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs font-mono"
                     required
                   />
                 </div>
@@ -520,7 +520,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 value={primaryMinistryFocus}
                 onChange={(e) => setPrimaryMinistryFocus(e.target.value)}
                 placeholder="e.g. Cultivating excellence, hospitality, and prayerful servant leadership in God's sanctuary."
-                className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
               />
             </div>
 
@@ -536,7 +536,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   value={defaultMeetingUrl}
                   onChange={(e) => setDefaultMeetingUrl(e.target.value)}
                   placeholder="https://meet.google.com/..."
-                  className="w-full pl-9 pr-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                  className="w-full pl-9 pr-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
                 />
               </div>
             </div>
@@ -551,7 +551,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                     type="checkbox"
                     checked={autoArchiveToVault}
                     onChange={(e) => setAutoArchiveToVault(e.target.checked)}
-                    className="w-4 h-4 mt-0.5 rounded text-orange-600 focus:ring-orange-500 border-neutral-300"
+                    className="w-4 h-4 mt-0.5 rounded text-neutral-900 focus:ring-neutral-900 border-neutral-300 accent-neutral-900"
                   />
                   <div className="min-w-0">
                     <span className="text-xs font-bold text-neutral-900 block">
@@ -568,7 +568,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                     type="checkbox"
                     checked={allowAnonymousReflections}
                     onChange={(e) => setAllowAnonymousReflections(e.target.checked)}
-                    className="w-4 h-4 mt-0.5 rounded text-orange-600 focus:ring-orange-500 border-neutral-300"
+                    className="w-4 h-4 mt-0.5 rounded text-neutral-900 focus:ring-neutral-900 border-neutral-300 accent-neutral-900"
                   />
                   <div className="min-w-0">
                     <span className="text-xs font-bold text-neutral-900 block">
@@ -585,7 +585,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                     type="checkbox"
                     checked={requireAdminApproval}
                     onChange={(e) => setRequireAdminApproval(e.target.checked)}
-                    className="w-4 h-4 mt-0.5 rounded text-orange-600 focus:ring-orange-500 border-neutral-300"
+                    className="w-4 h-4 mt-0.5 rounded text-neutral-900 focus:ring-neutral-900 border-neutral-300 accent-neutral-900"
                   />
                   <div className="min-w-0">
                     <span className="text-xs font-bold text-neutral-900 block">
@@ -600,10 +600,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             </div>
 
             {/* Data Management */}
-            <div className="p-4 rounded-lg bg-orange-50/70 border border-orange-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+            <div className="p-4 rounded-lg bg-neutral-100/70 border border-neutral-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
               <div>
-                <h4 className="text-xs font-bold text-orange-950">Workspace Data Backup & Export</h4>
-                <p className="text-[11px] text-orange-800 mt-0.5">
+                <h4 className="text-xs font-bold text-neutral-900">Workspace Data Backup & Export</h4>
+                <p className="text-[11px] text-neutral-600 mt-0.5">
                   Download a JSON archive containing team reflection archives, sprints, and roster records.
                 </p>
               </div>
@@ -620,7 +620,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             <div className="pt-3 border-t border-neutral-200 flex justify-end">
               <button
                 type="submit"
-                className="px-5 py-2 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-5 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <Save className="w-3.5 h-3.5" />
                 <span>Save Workspace Settings</span>
@@ -645,7 +645,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               {/* Daily Reminder Time */}
               <div className="p-4 rounded-lg bg-white/70 border border-neutral-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
                 <div className="flex items-center gap-3">
-                  <span className="p-2 rounded-lg bg-orange-100 text-orange-800 border border-orange-200 shrink-0">
+                  <span className="p-2 rounded-lg bg-neutral-100 text-neutral-800 border border-neutral-300 shrink-0">
                     <Clock className="w-4 h-4" />
                   </span>
                   <div>
@@ -660,14 +660,14 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   type="time"
                   value={reminderTime}
                   onChange={(e) => setReminderTime(e.target.value)}
-                  className="px-3 py-1.5 rounded-lg bg-white border border-neutral-300 text-xs font-mono text-neutral-900 shadow-2xs focus:outline-none focus:border-orange-500"
+                  className="px-3 py-1.5 rounded-lg bg-white border border-neutral-300 text-xs font-mono text-neutral-900 shadow-2xs focus:outline-none focus:border-neutral-900"
                 />
               </div>
 
               {/* Weekly Digest Email */}
               <div className="p-4 rounded-lg bg-white/70 border border-neutral-300 flex items-center justify-between gap-3 shadow-2xs">
                 <div className="flex items-center gap-3">
-                  <span className="p-2 rounded-lg bg-orange-100 text-orange-800 border border-orange-200 shrink-0">
+                  <span className="p-2 rounded-lg bg-neutral-100 text-neutral-800 border border-neutral-300 shrink-0">
                     <BookOpen className="w-4 h-4" />
                   </span>
                   <div>
@@ -683,7 +683,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                     type="checkbox"
                     checked={emailDigest}
                     onChange={(e) => setEmailDigest(e.target.checked)}
-                    className="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 border-neutral-300"
+                    className="w-4 h-4 rounded text-neutral-900 focus:ring-neutral-900 border-neutral-300 accent-neutral-900"
                   />
                 </label>
               </div>
@@ -691,7 +691,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               {/* Audio & Sound Effects */}
               <div className="p-4 rounded-lg bg-white/70 border border-neutral-300 flex items-center justify-between gap-3 shadow-2xs">
                 <div className="flex items-center gap-3">
-                  <span className="p-2 rounded-lg bg-orange-100 text-orange-800 border border-orange-200 shrink-0">
+                  <span className="p-2 rounded-lg bg-neutral-100 text-neutral-800 border border-neutral-300 shrink-0">
                     <Volume2 className="w-4 h-4" />
                   </span>
                   <div>
@@ -707,7 +707,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                     type="checkbox"
                     checked={soundEnabled}
                     onChange={(e) => setSoundEnabled(e.target.checked)}
-                    className="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 border-neutral-300"
+                    className="w-4 h-4 rounded text-neutral-900 focus:ring-neutral-900 border-neutral-300 accent-neutral-900"
                   />
                 </label>
               </div>
@@ -716,7 +716,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             <div className="pt-3 border-t border-neutral-200 flex justify-end">
               <button
                 type="submit"
-                className="px-5 py-2 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-5 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <Save className="w-3.5 h-3.5" />
                 <span>Save Notification Preferences</span>

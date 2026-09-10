@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import {
   Quote,
   Calendar,
@@ -21,8 +21,12 @@ export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayCli
       {/* Top Tag & Sprint Indicator */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-orange-50/90 text-orange-700 border border-orange-200/80 shadow-2xs">
-            <Sparkles className="w-3 h-3 text-orange-600" />
+          <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-2xs border ${
+            sprint.status === 'archived'
+              ? 'bg-neutral-100 text-neutral-700 border-neutral-200'
+              : 'bg-emerald-50 text-emerald-800 border-emerald-300'
+          }`}>
+            <Sparkles className={`w-3 h-3 ${sprint.status === 'archived' ? 'text-neutral-500' : 'text-emerald-600'}`} />
             {sprint.status === 'archived' ? `Archived Sprint #${sprint.sprintNumber}` : 'Active 7-Day Sprint'}
           </span>
           <span className="text-neutral-300">•</span>
@@ -32,7 +36,7 @@ export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayCli
           </span>
         </div>
 
-        <span className="text-xs font-mono font-bold text-orange-700 bg-orange-50/90 px-2.5 py-0.5 rounded-md border border-orange-200/80">
+        <span className="text-xs font-mono font-bold text-neutral-800 bg-neutral-100 px-2.5 py-0.5 rounded-md border border-neutral-300">
           Day {sprint.currentDay} of {sprint.totalDays}
         </span>
       </div>
@@ -48,10 +52,10 @@ export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayCli
       </div>
 
       {/* Anchor Scripture Card with Glass & Sharp Border */}
-      <div className="p-4 rounded-lg bg-white/70 backdrop-blur-md border-l-4 border-l-orange-600 border border-neutral-300 relative space-y-1.5 shadow-2xs">
+      <div className="p-4 rounded-lg bg-white/70 backdrop-blur-md border-l-4 border-l-neutral-900 border border-neutral-300 relative space-y-1.5 shadow-2xs">
         <div className="flex items-center justify-between text-xs font-semibold text-neutral-800">
-          <span className="flex items-center gap-1.5 text-orange-700 font-bold">
-            <BookOpen className="w-3.5 h-3.5 text-orange-600" /> Anchor Scripture
+          <span className="flex items-center gap-1.5 text-neutral-900 font-bold">
+            <BookOpen className="w-3.5 h-3.5 text-neutral-700" /> Anchor Scripture
           </span>
           <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/90 border border-neutral-200 text-neutral-700 font-semibold">
             {sprint.anchorReference}
@@ -86,20 +90,20 @@ export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayCli
                 title={`Day ${dayItem.day}: ${dayItem.title}`}
                 className={`p-2 rounded-lg text-center border transition-all cursor-pointer ${
                   isCurrent
-                    ? 'bg-orange-50/90 border-orange-500 shadow-2xs text-orange-950 font-bold'
+                    ? 'bg-neutral-900 border-neutral-900 shadow-2xs text-white font-bold'
                     : isCompleted
-                      ? 'bg-white/70 backdrop-blur-sm border-neutral-300 text-neutral-700 hover:bg-neutral-100/70'
-                      : 'bg-white/50 border-neutral-200 text-neutral-400 hover:border-neutral-300'
+                      ? 'bg-white/80 backdrop-blur-sm border-neutral-300 text-neutral-700 hover:bg-neutral-100'
+                      : 'bg-neutral-50/70 border-neutral-200 text-neutral-400 hover:border-neutral-300'
                 }`}
               >
-                <span className="text-[10px] uppercase tracking-wider block font-medium">
+                <span className={`text-[10px] uppercase tracking-wider block font-medium ${isCurrent ? 'text-neutral-200' : ''}`}>
                   Day {dayItem.day}
                 </span>
                 <div className="flex justify-center mt-1">
                   {isCompleted ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-orange-600" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                   ) : isCurrent ? (
-                    <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   ) : (
                     <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
                   )}
@@ -110,11 +114,11 @@ export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayCli
         </div>
 
         {/* Active Today Subtheme Callout */}
-        <div className="flex items-center justify-between text-xs px-3.5 py-2 rounded-lg bg-orange-50/80 backdrop-blur-sm border border-orange-200 text-orange-950 shadow-2xs">
+        <div className="flex items-center justify-between text-xs px-3.5 py-2 rounded-lg bg-neutral-100/90 backdrop-blur-sm border border-neutral-300 text-neutral-900 shadow-2xs">
           <span className="truncate">
-            Focus: <strong className="font-bold">Excellence Over Performance</strong>
+            Focus: <strong className="font-bold text-neutral-950">Excellence Over Performance</strong>
           </span>
-          <span className="text-[11px] font-mono text-orange-700 shrink-0 font-semibold">
+          <span className="text-[11px] font-mono text-neutral-600 shrink-0 font-semibold">
             Colossians 3:23-24
           </span>
         </div>

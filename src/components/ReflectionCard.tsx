@@ -97,7 +97,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
     <article
       className={`rounded-xl glass-card-sharp border transition-all duration-200 overflow-hidden ${
         card.isPinned
-          ? 'border-orange-400/90 ring-1 ring-orange-300/60 shadow-xs'
+          ? 'border-neutral-900 ring-1 ring-neutral-800 shadow-xs'
           : card.isHidden
             ? 'border-dashed border-red-300 bg-red-50/30 opacity-75'
             : 'border-neutral-300 shadow-2xs hover:border-neutral-400'
@@ -105,12 +105,12 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
     >
       {/* Pinned by Chief Usher Header Banner */}
       {card.isPinned && (
-        <div className="px-4 py-1.5 bg-gradient-to-r from-orange-50 to-indigo-50 border-b border-orange-200/70 flex items-center justify-between text-xs text-orange-800 font-semibold">
+        <div className="px-4 py-1.5 bg-neutral-900 text-white flex items-center justify-between text-xs font-semibold">
           <div className="flex items-center gap-1.5">
-            <Pin className="w-3.5 h-3.5 fill-current text-orange-600 rotate-45" />
+            <Pin className="w-3.5 h-3.5 fill-current text-white rotate-45" />
             <span>Pinned by Chief Usher</span>
           </div>
-          <span className="text-[10px] font-mono text-orange-600 font-medium">Highlight</span>
+          <span className="text-[10px] font-mono text-neutral-300 font-medium">Highlight</span>
         </div>
       )}
 
@@ -137,7 +137,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
                   {card.author.name}
                 </span>
                 {card.author.isCurrentUser && (
-                  <span className="text-[10px] px-1 rounded bg-orange-100 text-orange-700 font-bold font-mono">
+                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-neutral-100 text-neutral-800 font-bold font-mono border border-neutral-200">
                     You
                   </span>
                 )}
@@ -152,15 +152,15 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
           <div className="flex items-center gap-1.5 shrink-0">
             {/* Tag Badge */}
             {card.type === 'scripture' ? (
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-violet-50 text-violet-700 border border-violet-200">
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-800 border border-neutral-200">
                 Scripture
               </span>
             ) : card.type === 'voice' ? (
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-800 border border-neutral-200">
                 Voice Memo
               </span>
             ) : card.type === 'media' ? (
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-50 text-rose-700 border border-rose-200">
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-800 border border-neutral-200">
                 {card.mediaType?.toUpperCase() || 'MEDIA'}
               </span>
             ) : (
@@ -174,7 +174,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
               <div className="relative">
                 <button
                   onClick={() => setAdminMenuOpen(!adminMenuOpen)}
-                  className="p-1 rounded-lg text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 transition-colors"
+                  className="p-1 rounded-lg text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 transition-colors cursor-pointer"
                   title="Admin Moderation"
                 >
                   <MoreHorizontal className="w-4 h-4" />
@@ -188,7 +188,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
                           onTogglePin(card.id)
                           setAdminMenuOpen(false)
                         }}
-                        className="w-full text-left px-2 py-1.5 rounded-lg flex items-center gap-2 hover:bg-neutral-100 text-neutral-700"
+                        className="w-full text-left px-2.5 py-1.5 rounded-lg flex items-center gap-2 hover:bg-neutral-100 text-neutral-700 cursor-pointer"
                       >
                         <Pin className="w-3.5 h-3.5" />
                         <span>{card.isPinned ? 'Unpin Post' : 'Pin to Top'}</span>
@@ -200,7 +200,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
                           onToggleHide(card.id)
                           setAdminMenuOpen(false)
                         }}
-                        className="w-full text-left px-2 py-1.5 rounded-lg flex items-center gap-2 hover:bg-red-50 text-red-600"
+                        className="w-full text-left px-2.5 py-1.5 rounded-lg flex items-center gap-2 hover:bg-rose-50 text-rose-600 cursor-pointer"
                       >
                         <EyeOff className="w-3.5 h-3.5" />
                         <span>{card.isHidden ? 'Unhide' : 'Hide Post'}</span>
@@ -218,9 +218,9 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
         {/* 1. SCRIPTURE */}
         {card.type === 'scripture' && (
           <div className="space-y-2">
-            <div className="p-3.5 rounded-xl bg-neutral-50 border-l-4 border-l-violet-600 border-t border-t-neutral-200/60 border-r border-r-neutral-200/60 border-b border-b-neutral-200/60 space-y-1">
+            <div className="p-3.5 rounded-xl bg-neutral-50 border-l-4 border-l-neutral-900 border border-neutral-200 space-y-1">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-violet-800">
+                <span className="font-bold text-neutral-900">
                   {card.scriptureReference}
                 </span>
                 <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-white border border-neutral-200 text-neutral-600">
@@ -266,7 +266,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-11 h-11 rounded-full bg-rose-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <div className="w-11 h-11 rounded-full bg-neutral-900 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <Play className="w-5 h-5 fill-current ml-0.5" />
                   </div>
                 </div>
@@ -293,7 +293,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
                     />
                     <button
                       onClick={() => setIsPlayingSpotify(!isPlayingSpotify)}
-                      className="absolute inset-0 bg-black/30 text-white flex items-center justify-center hover:bg-black/50"
+                      className="absolute inset-0 bg-black/30 text-white flex items-center justify-center hover:bg-black/50 cursor-pointer"
                     >
                       {isPlayingSpotify ? (
                         <Pause className="w-4 h-4 fill-current" />
@@ -338,7 +338,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
             <div className="p-3 rounded-xl bg-neutral-50 border border-neutral-200 flex items-center gap-3">
               <button
                 onClick={() => setIsPlayingAudio(!isPlayingAudio)}
-                className="w-9 h-9 rounded-full bg-orange-600 hover:bg-orange-700 text-white flex items-center justify-center shadow-xs shrink-0 transition-colors"
+                className="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white flex items-center justify-center shadow-xs shrink-0 transition-colors cursor-pointer"
                 aria-label={isPlayingAudio ? 'Pause' : 'Play'}
               >
                 {isPlayingAudio ? (
@@ -360,7 +360,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
                         key={idx}
                         style={{ height: `${val}%` }}
                         className={`flex-1 rounded-full transition-colors ${
-                          isPassed ? 'bg-orange-600' : isPlayingAudio ? 'bg-orange-300' : 'bg-neutral-300'
+                          isPassed ? 'bg-neutral-900' : isPlayingAudio ? 'bg-neutral-500' : 'bg-neutral-300'
                         }`}
                       />
                     )
@@ -397,47 +397,47 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
 
         {/* Interactive Reaction & Comment Bar */}
         <div className="pt-2 border-t border-neutral-100 flex items-center justify-between gap-2">
-          {/* Reaction Pills: Amen, Inspiring, Heart */}
+          {/* Reaction Pills: Amen (Emerald), Inspiring (Amber), Heart (Rose) */}
           <div className="flex items-center gap-1.5">
             {/* Amen Reaction */}
             <button
               onClick={() => onReact(card.id, 'amen')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all cursor-pointer ${
                 card.userReactions.amen
-                  ? 'bg-orange-50 border-orange-300 text-orange-700 font-bold shadow-xs'
+                  ? 'bg-emerald-50 border-emerald-300 text-emerald-800 font-bold shadow-xs'
                   : 'bg-white border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
               }`}
               title="Amen - In agreement"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-orange-600" />
+              <ShieldCheck className={`w-3.5 h-3.5 ${card.userReactions.amen ? 'text-emerald-600' : 'text-neutral-500'}`} />
               <span>{card.reactions.amen}</span>
             </button>
 
             {/* Inspiring Reaction */}
             <button
               onClick={() => onReact(card.id, 'inspiring')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all cursor-pointer ${
                 card.userReactions.inspiring
-                  ? 'bg-amber-50 border-amber-300 text-amber-700 font-bold shadow-xs'
+                  ? 'bg-amber-50 border-amber-300 text-amber-800 font-bold shadow-xs'
                   : 'bg-white border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
               }`}
               title="Inspiring - Kingdom Insight"
             >
-              <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
+              <Lightbulb className={`w-3.5 h-3.5 ${card.userReactions.inspiring ? 'text-amber-500' : 'text-neutral-500'}`} />
               <span>{card.reactions.inspiring}</span>
             </button>
 
             {/* Heart Reaction */}
             <button
               onClick={() => onReact(card.id, 'heart')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all cursor-pointer ${
                 card.userReactions.heart
-                  ? 'bg-rose-50 border-rose-300 text-rose-700 font-bold shadow-xs'
+                  ? 'bg-rose-50 border-rose-300 text-rose-800 font-bold shadow-xs'
                   : 'bg-white border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
               }`}
               title="Heart - Encouraged"
             >
-              <Heart className="w-3.5 h-3.5 text-rose-500 fill-current" />
+              <Heart className={`w-3.5 h-3.5 ${card.userReactions.heart ? 'text-rose-600 fill-current' : 'text-neutral-500'}`} />
               <span>{card.reactions.heart}</span>
             </button>
           </div>
@@ -446,7 +446,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
           <div className="flex items-center gap-1">
             <button
               onClick={() => setIsCommentsOpen(!isCommentsOpen)}
-              className={`px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors ${
+              className={`px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors cursor-pointer ${
                 isCommentsOpen ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-500 hover:bg-neutral-100'
               }`}
             >
@@ -461,7 +461,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
 
             <button
               onClick={() => setIsBookmarked(!isBookmarked)}
-              className={`p-1.5 rounded-lg text-xs transition-colors ${
+              className={`p-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
                 isBookmarked ? 'text-amber-500' : 'text-neutral-400 hover:text-neutral-700'
               }`}
               title="Bookmark post"
@@ -471,7 +471,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
 
             <button
               onClick={handleShare}
-              className="p-1.5 rounded-lg text-neutral-400 hover:text-neutral-700 transition-colors"
+              className="p-1.5 rounded-lg text-neutral-400 hover:text-neutral-700 transition-colors cursor-pointer"
               title="Copy share link"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5" />}
@@ -529,12 +529,12 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
                 placeholder="Write a reply or team prayer..."
                 value={commentInput}
                 onChange={(e) => setCommentInput(e.target.value)}
-                className="flex-1 px-3 py-1.5 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
+                className="flex-1 px-3 py-1.5 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white transition-all"
               />
               <button
                 type="submit"
                 disabled={!commentInput.trim()}
-                className="p-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold disabled:opacity-40 transition-colors shadow-xs"
+                className="p-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white font-bold disabled:opacity-40 transition-colors shadow-xs cursor-pointer"
               >
                 <Send className="w-3 h-3" />
               </button>

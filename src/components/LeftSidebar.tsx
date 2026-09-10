@@ -53,10 +53,10 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         <div className="relative">
           <button
             onClick={() => setIsCommunityDropdownOpen(!isCommunityDropdownOpen)}
-            className="w-full p-2 rounded-lg bg-white/70 backdrop-blur-md hover:bg-white/95 border border-neutral-300 text-left flex items-center justify-between transition-colors group"
+            className="w-full p-2 rounded-lg bg-white/70 backdrop-blur-md hover:bg-white/95 border border-neutral-300 text-left flex items-center justify-between transition-colors group cursor-pointer"
           >
             <div className="flex items-center gap-2.5 min-w-0 pr-1">
-              <div className="w-8 h-8 rounded-lg bg-orange-100/80 text-orange-800 border border-orange-200 flex items-center justify-center font-bold text-xs shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-neutral-100 text-neutral-900 border border-neutral-200 flex items-center justify-center font-bold text-xs shrink-0">
                 {selectedMinistry.code}
               </div>
               <div className="min-w-0">
@@ -85,22 +85,24 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                       onSelectMinistry(ministry)
                       setIsCommunityDropdownOpen(false)
                     }}
-                    className={`w-full text-left px-2.5 py-2 rounded-lg text-xs flex items-center justify-between transition-colors ${
-                      isSelected ? 'bg-orange-50 text-orange-950 font-semibold' : 'text-neutral-700 hover:bg-neutral-100'
+                    className={`w-full text-left px-2.5 py-2 rounded-lg text-xs flex items-center justify-between transition-colors cursor-pointer ${
+                      isSelected ? 'bg-neutral-900 text-white font-semibold' : 'text-neutral-700 hover:bg-neutral-100'
                     }`}
                   >
                     <div className="flex items-center gap-2 truncate">
-                      <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-600">
+                      <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${
+                        isSelected ? 'bg-neutral-800 text-neutral-200' : 'bg-neutral-100 text-neutral-600'
+                      }`}>
                         {ministry.code}
                       </span>
                       <div className="truncate">
                         <p className="truncate text-xs">{ministry.name}</p>
-                        <span className="text-[10px] text-neutral-400 font-normal">
+                        <span className={`text-[10px] font-normal ${isSelected ? 'text-neutral-300' : 'text-neutral-400'}`}>
                           {ministry.memberCount} members
                         </span>
                       </div>
                     </div>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-orange-600 shrink-0" />}
+                    {isSelected && <Check className="w-3.5 h-3.5 text-white shrink-0" />}
                   </button>
                 )
               })}
@@ -120,21 +122,21 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
               <button
                 key={item.id}
                 onClick={() => onSelectTab(item.id)}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all ${
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                   isActive
                     ? 'bg-neutral-900 text-white font-semibold shadow-xs'
                     : 'text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100/80'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <span className={isActive ? 'text-orange-400' : 'text-neutral-500'}>
+                  <span className={isActive ? 'text-white' : 'text-neutral-500'}>
                     {item.icon}
                   </span>
                   <span>{item.label}</span>
                 </div>
                 {item.badge && (
                   <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${
-                    isActive ? 'bg-orange-500 text-white' : 'bg-neutral-100 text-neutral-600 border border-neutral-200'
+                    isActive ? 'bg-neutral-800 text-neutral-200' : 'bg-neutral-100 text-neutral-600 border border-neutral-200'
                   }`}>
                     {item.badge}
                   </span>
@@ -147,8 +149,8 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         {/* Motivational Sprint Widget (Peerlist-style card) */}
         <div className="p-3 rounded-lg bg-white/70 backdrop-blur-md border border-neutral-300 space-y-2 shadow-2xs">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-orange-700 flex items-center gap-1">
-              <Flame className="w-3 h-3 fill-current text-orange-600" />
+            <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-700 flex items-center gap-1">
+              <Flame className="w-3 h-3 fill-current text-amber-500" />
               Week 12 Progress
             </span>
             <span className="text-[10px] font-mono font-bold text-neutral-600">Day 4/7</span>
@@ -158,11 +160,11 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           </p>
           {/* Progress bar */}
           <div className="w-full h-1.5 rounded-full bg-neutral-200 overflow-hidden">
-            <div className="h-full bg-orange-600 rounded-full" style={{ width: '57%' }} />
+            <div className="h-full bg-neutral-900 rounded-full" style={{ width: '57%' }} />
           </div>
           <p className="text-[10px] text-neutral-500 flex items-center justify-between pt-0.5">
             <span>Keep your streak alive</span>
-            <span className="text-orange-600 font-bold font-mono">5d streak</span>
+            <span className="text-neutral-900 font-bold font-mono">5d streak</span>
           </p>
         </div>
       </div>
@@ -174,15 +176,17 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           onClick={onToggleAdminMode}
           className={`w-full px-2.5 py-1.5 rounded-lg text-[11px] font-medium flex items-center justify-between transition-colors border cursor-pointer ${
             isAdminMode
-              ? 'bg-orange-50 text-orange-900 border-orange-300 hover:bg-orange-100/80'
+              ? 'bg-neutral-900 text-white border-neutral-900 hover:bg-neutral-800'
               : 'bg-neutral-100 text-neutral-600 border-neutral-300 hover:bg-neutral-200/60'
           }`}
         >
           <div className="flex items-center gap-1.5">
-            <Shield className="w-3.5 h-3.5 text-orange-600" />
+            <Shield className={`w-3.5 h-3.5 ${isAdminMode ? 'text-white' : 'text-neutral-500'}`} />
             <span>{isAdminMode ? 'Owner: Admin Mode' : 'Member View'}</span>
           </div>
-          <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-white/80 border border-neutral-200 text-neutral-600">
+          <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border ${
+            isAdminMode ? 'bg-neutral-800 text-neutral-200 border-neutral-700' : 'bg-white/80 border-neutral-200 text-neutral-600'
+          }`}>
             Toggle
           </span>
         </button>
@@ -191,7 +195,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         <button
           type="button"
           onClick={() => onSelectTab('settings')}
-          className="w-full text-left p-2 rounded-lg bg-white/70 backdrop-blur-md border border-neutral-300 hover:border-orange-300 hover:bg-white flex items-center justify-between shadow-2xs transition-all cursor-pointer group"
+          className="w-full text-left p-2 rounded-lg bg-white/70 backdrop-blur-md border border-neutral-300 hover:border-neutral-400 hover:bg-white flex items-center justify-between shadow-2xs transition-all cursor-pointer group"
           title="Click to manage profile and workspace settings"
         >
           <div className="flex items-center gap-2.5 min-w-0">
@@ -199,17 +203,17 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
               <img
                 src={currentUser.avatar}
                 alt={currentUser.name}
-                className="w-8 h-8 rounded-full object-cover border border-neutral-300 group-hover:border-orange-400 transition-colors shrink-0"
+                className="w-8 h-8 rounded-full object-cover border border-neutral-300 group-hover:border-neutral-400 transition-colors shrink-0"
               />
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <p className="text-xs font-bold text-neutral-900 truncate leading-tight group-hover:text-orange-950 transition-colors">
+                <p className="text-xs font-bold text-neutral-900 truncate leading-tight group-hover:text-neutral-950 transition-colors">
                   {currentUser.name}
                 </p>
                 {currentUser.isWorkspaceOwner && (
-                  <span className="px-1 py-0.2 rounded text-[8px] font-bold uppercase tracking-wider bg-orange-100 text-orange-800 border border-orange-200 shrink-0">
+                  <span className="px-1 py-0.2 rounded text-[8px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-800 border border-neutral-200 shrink-0">
                     Owner
                   </span>
                 )}
@@ -219,7 +223,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
               </p>
             </div>
           </div>
-          <Settings className="w-3.5 h-3.5 text-neutral-400 group-hover:text-orange-600 transition-colors shrink-0 ml-1" />
+          <Settings className="w-3.5 h-3.5 text-neutral-400 group-hover:text-neutral-700 transition-colors shrink-0 ml-1" />
         </button>
 
         {/* Micro footer links */}

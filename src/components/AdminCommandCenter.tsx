@@ -159,8 +159,8 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
       <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-orange-50 text-orange-800 border border-orange-200 flex items-center gap-1">
-              <Crown className="w-3 h-3 text-orange-600" />
+            <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-900 border border-neutral-300 flex items-center gap-1.5 shadow-2xs">
+              <Crown className="w-3 h-3 text-amber-500 fill-amber-500" />
               Workspace Owner & Admin Access
             </span>
             <span className="text-xs text-neutral-400 font-mono">Restricted Command Panel</span>
@@ -195,11 +195,11 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           onClick={() => setActiveAdminTab('sprint')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'sprint'
-              ? 'bg-white text-neutral-900 shadow-xs border border-neutral-200'
+              ? 'bg-neutral-900 text-white shadow-xs'
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <Calendar className="w-3.5 h-3.5 text-orange-600" />
+          <Calendar className={`w-3.5 h-3.5 ${activeAdminTab === 'sprint' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Sprint Lifecycle</span>
         </button>
 
@@ -207,11 +207,11 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           onClick={() => setActiveAdminTab('meeting')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'meeting'
-              ? 'bg-white text-neutral-900 shadow-xs border border-neutral-200'
+              ? 'bg-neutral-900 text-white shadow-xs'
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <Video className="w-3.5 h-3.5 text-emerald-600" />
+          <Video className={`w-3.5 h-3.5 ${activeAdminTab === 'meeting' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Meeting Scheduler</span>
         </button>
 
@@ -223,7 +223,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <Pin className="w-3.5 h-3.5 text-orange-600" />
+          <Pin className={`w-3.5 h-3.5 ${activeAdminTab === 'curation' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Feed Curator & Broadcast</span>
         </button>
 
@@ -231,7 +231,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           onClick={() => setActiveAdminTab('analytics')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'analytics'
-              ? 'bg-white text-neutral-900 shadow-xs border border-neutral-200'
+              ? 'bg-neutral-900 text-white shadow-xs'
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
@@ -263,7 +263,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                   type="text"
                   value={themeTitle}
                   onChange={(e) => setThemeTitle(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white"
                   required
                 />
               </div>
@@ -276,7 +276,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                   type="text"
                   value={anchorReference}
                   onChange={(e) => setAnchorReference(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white"
                   required
                 />
               </div>
@@ -290,7 +290,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 type="text"
                 value={themeSubtitle}
                 onChange={(e) => setThemeSubtitle(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 focus:bg-white"
+                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white"
               />
             </div>
 
@@ -302,7 +302,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 rows={3}
                 value={anchorScripture}
                 onChange={(e) => setAnchorScripture(e.target.value)}
-                className="w-full p-3 rounded-xl bg-neutral-50 border border-neutral-200 text-xs font-serif italic text-neutral-800 focus:outline-none focus:border-orange-500 focus:bg-white"
+                className="w-full p-3 rounded-xl bg-neutral-50 border border-neutral-200 text-xs font-serif italic text-neutral-800 focus:outline-none focus:border-neutral-900 focus:bg-white"
                 required
               />
             </div>
@@ -316,7 +316,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-orange-500"
+                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900"
                 />
               </div>
               <div>
@@ -327,7 +327,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-orange-500"
+                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900"
                 />
               </div>
             </div>
@@ -375,7 +375,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold shadow-xs transition-colors"
+                  className="px-5 py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors"
                 >
                   Save Sprint Settings
                 </button>
@@ -402,7 +402,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 type="url"
                 value={meetingUrl}
                 onChange={(e) => setMeetingUrl(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 focus:bg-white shadow-2xs"
+                className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white shadow-2xs"
                 placeholder="https://meet.google.com/..."
                 required
               />
@@ -416,7 +416,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 type="text"
                 value={meetingTime}
                 onChange={(e) => setMeetingTime(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 focus:bg-white shadow-2xs"
+                className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white shadow-2xs"
                 placeholder="e.g. 08:00 PM EST Tonight"
                 required
               />
@@ -449,7 +449,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 value={newAgendaItem}
                 onChange={(e) => setNewAgendaItem(e.target.value)}
                 placeholder="Add agenda topic or discussion question..."
-                className="flex-1 px-3 py-1.5 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 shadow-2xs"
+                className="flex-1 px-3 py-1.5 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
               />
               <button
                 type="button"
@@ -465,7 +465,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           <div className="pt-2 border-t border-neutral-200 flex justify-end">
             <button
               type="submit"
-              className="px-5 py-2 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
+              className="px-5 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
             >
               Update Meeting & Agenda
             </button>
@@ -480,7 +480,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           <form onSubmit={handleSaveAnnouncement} className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs space-y-3.5">
             <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
               <div className="flex items-center gap-2">
-                <Megaphone className="w-4 h-4 text-orange-600" />
+                <Megaphone className="w-4 h-4 text-amber-600" />
                 <h3 className="text-sm font-bold text-neutral-900">Broadcast Urgent Banner Announcement</h3>
               </div>
               <span className="text-[10px] font-mono text-neutral-400">Top of App Banner</span>
@@ -490,7 +490,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
               rows={2}
               value={annMessage}
               onChange={(e) => setAnnMessage(e.target.value)}
-              className="w-full p-3 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-800 focus:outline-none focus:border-orange-500 focus:bg-white leading-relaxed shadow-2xs"
+              className="w-full p-3 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-800 focus:outline-none focus:border-neutral-900 focus:bg-white leading-relaxed shadow-2xs"
               placeholder="e.g. Reminder: Usher rehearsal this Saturday at 4 PM..."
               required
             />
@@ -502,7 +502,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                     type="checkbox"
                     checked={annActive}
                     onChange={(e) => setAnnActive(e.target.checked)}
-                    className="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 border-neutral-300"
+                    className="w-4 h-4 rounded text-neutral-900 focus:ring-neutral-900 border-neutral-300 accent-neutral-900"
                   />
                   <span>Show Banner Across Platform</span>
                 </label>
@@ -519,7 +519,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
               <button
                 type="submit"
-                className="px-4 py-2 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
               >
                 Save Announcement
               </button>
@@ -533,7 +533,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 <h3 className="text-sm font-bold text-neutral-900">Feed Post Curation & Moderation</h3>
                 <p className="text-xs text-neutral-500">Pin up to 3 standout posts or hide inappropriate content.</p>
               </div>
-              <span className="text-xs font-semibold text-orange-700">
+              <span className="text-xs font-semibold text-neutral-700">
                 {cards.filter((c) => c.isPinned).length} of 3 Pinned
               </span>
             </div>
@@ -544,9 +544,9 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                   key={card.id}
                   className={`p-3 rounded-lg border flex items-center justify-between gap-3 text-xs transition-colors ${
                     card.isPinned
-                      ? 'bg-orange-50/80 border-orange-300'
+                      ? 'bg-neutral-100/90 border-neutral-400'
                       : card.isHidden
-                        ? 'bg-red-50/50 border-red-200 opacity-60'
+                        ? 'bg-rose-50/70 border-rose-200 opacity-60'
                         : 'bg-white/70 border-neutral-200'
                   }`}
                 >
@@ -559,12 +559,12 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                         {card.type.toUpperCase()}
                       </span>
                       {card.isPinned && (
-                        <span className="text-[10px] font-bold text-orange-800 bg-orange-100 px-1.5 rounded border border-orange-200">
+                        <span className="text-[10px] font-bold text-neutral-900 bg-neutral-200 px-1.5 rounded border border-neutral-300">
                           Pinned
                         </span>
                       )}
                       {card.isHidden && (
-                        <span className="text-[10px] font-bold text-red-600 bg-white px-1.5 rounded border border-red-200">
+                        <span className="text-[10px] font-bold text-rose-600 bg-white px-1.5 rounded border border-rose-200">
                           Hidden
                         </span>
                       )}
@@ -578,7 +578,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                       onClick={() => onTogglePinCard(card.id)}
                       className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 border transition-colors cursor-pointer ${
                         card.isPinned
-                          ? 'bg-orange-600 text-white border-orange-600'
+                          ? 'bg-neutral-900 text-white border-neutral-900'
                           : 'bg-white border-neutral-300 text-neutral-700 hover:bg-neutral-100'
                       }`}
                     >
@@ -591,8 +591,8 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                       onClick={() => onToggleHideCard(card.id)}
                       className={`p-1.5 rounded-lg border transition-colors cursor-pointer ${
                         card.isHidden
-                          ? 'bg-red-600 text-white border-red-600'
-                          : 'bg-white border-neutral-300 text-neutral-500 hover:text-red-600 hover:bg-neutral-100'
+                          ? 'bg-rose-600 text-white border-rose-600'
+                          : 'bg-white border-neutral-300 text-neutral-500 hover:text-rose-600 hover:bg-neutral-100'
                       }`}
                       title={card.isHidden ? 'Unhide post' : 'Hide from feed'}
                     >
@@ -618,7 +618,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
             <div className="p-3.5 rounded-lg bg-white/70 border border-neutral-300 shadow-2xs">
               <span className="text-[10px] uppercase font-bold text-neutral-400">Total Reflections</span>
               <p className="text-2xl font-black text-neutral-900 mt-1">{cards.length}</p>
-              <span className="text-[10px] text-orange-600 font-semibold">+6 today</span>
+              <span className="text-[10px] text-emerald-600 font-semibold">+6 today</span>
             </div>
 
             <div className="p-3.5 rounded-lg bg-white/70 border border-neutral-300 shadow-2xs">
@@ -629,27 +629,27 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
             <div className="p-3.5 rounded-lg bg-white/70 border border-neutral-300 shadow-2xs">
               <span className="text-[10px] uppercase font-bold text-neutral-400">Audio Voice Notes</span>
-              <p className="text-2xl font-black text-orange-700 mt-1">{currentSprint.voiceMemosCount}</p>
+              <p className="text-2xl font-black text-neutral-900 mt-1">{currentSprint.voiceMemosCount}</p>
               <span className="text-[10px] text-neutral-400">Shared prayers</span>
             </div>
 
             <div className="p-3.5 rounded-lg bg-white/70 border border-neutral-300 shadow-2xs">
               <span className="text-[10px] uppercase font-bold text-neutral-400">Active Streaks</span>
-              <p className="text-2xl font-black text-orange-600 mt-1">28</p>
+              <p className="text-2xl font-black text-neutral-900 mt-1">28</p>
               <span className="text-[10px] text-neutral-400">3+ days streak</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-lg bg-orange-50/80 border border-orange-200 flex items-center justify-between">
+          <div className="p-4 rounded-lg bg-neutral-100/80 border border-neutral-300 flex items-center justify-between shadow-2xs">
             <div>
-              <h4 className="text-xs font-bold text-orange-950">Export Clean Weekly Report</h4>
-              <p className="text-[11px] text-orange-800 mt-0.5">
+              <h4 className="text-xs font-bold text-neutral-900">Export Clean Weekly Report</h4>
+              <p className="text-[11px] text-neutral-600 mt-0.5">
                 Copies a formatted Markdown recap directly to your clipboard for Slack or email.
               </p>
             </div>
             <button
               onClick={handleExportSummary}
-              className="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer shadow-2xs"
+              className="px-3.5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-xs flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer shadow-2xs"
             >
               <Copy className="w-3.5 h-3.5" />
               <span>Copy Report</span>

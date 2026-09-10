@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+﻿import { createFileRoute } from '@tanstack/react-router'
 import React, { useState, useMemo } from 'react'
 import {
   currentSprint as defaultSprint,
@@ -297,7 +297,7 @@ function NurtureApp() {
   const availableTags = ['#Scripture','#Hospitality','#Insight','#Leadership','#Prayer','#Media','#Excellence']
 
   return (
-    <div className="min-h-screen bg-[#fafafa] text-neutral-900 font-sans selection:bg-orange-100 selection:text-orange-900">
+    <div className="min-h-screen bg-[#fafafa] text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
 
       {/* ── 1. TOP NAVBAR (Bounded max-width, never touches screen edges) ── */}
       <header className="fixed top-0 left-0 right-0 z-40 h-14 bg-white/80 backdrop-blur-xl border-b border-neutral-300 shadow-2xs">
@@ -305,7 +305,7 @@ function NurtureApp() {
           
           {/* Left: Brand Identity with Sprout Icon + Interactive Week Selector */}
           <div className="flex items-center gap-2.5 shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center shadow-xs border border-orange-600/50">
+            <div className="w-8 h-8 rounded-lg bg-neutral-900 text-white flex items-center justify-center shadow-xs border border-neutral-800">
               <Sprout className="w-4.5 h-4.5 stroke-[2.2]" />
             </div>
 
@@ -321,18 +321,18 @@ function NurtureApp() {
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono font-medium border transition-all cursor-pointer ${
                     selectedWeek === 12
                       ? 'bg-neutral-100/90 text-neutral-800 border-neutral-300 hover:border-neutral-400'
-                      : 'bg-orange-50 text-orange-800 border-orange-300 font-bold hover:bg-orange-100'
+                      : 'bg-neutral-900 text-white border-neutral-900 font-bold hover:bg-neutral-800 shadow-2xs'
                   }`}
                   title="Click to browse previous weeks history"
                 >
-                  <History className="w-3 h-3 text-orange-600" />
+                  <History className={`w-3 h-3 ${selectedWeek === 12 ? 'text-neutral-500' : 'text-neutral-300'}`} />
                   <span>{selectedWeek === 'all' ? 'All Weeks' : `Week ${selectedWeek}`}</span>
                   {selectedWeek !== 12 && selectedWeek !== 'all' && (
-                    <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-1 bg-orange-200 text-orange-900 rounded">
+                    <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-1 bg-neutral-800 text-neutral-200 rounded">
                       Archive
                     </span>
                   )}
-                  <ChevronDown className={`w-3 h-3 text-neutral-400 transition-transform ${isWeekDropdownOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-3 h-3 ${selectedWeek === 12 ? 'text-neutral-400' : 'text-neutral-300'} transition-transform ${isWeekDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
                 {/* Week Selector Popover */}
@@ -358,26 +358,30 @@ function NurtureApp() {
                             onClick={() => handleSelectWeek(sprint.sprintNumber)}
                             className={`w-full text-left p-2 rounded-lg text-xs flex items-start justify-between transition-colors border ${
                               isSelected
-                                ? 'bg-orange-50 text-orange-950 font-semibold border-orange-300'
+                                ? 'bg-neutral-900 text-white font-semibold border-neutral-900 shadow-2xs'
                                 : 'border-transparent text-neutral-700 hover:bg-neutral-100 hover:border-neutral-200'
                             }`}
                           >
                             <div className="min-w-0 flex-1 pr-2">
                               <div className="flex items-center gap-1.5">
                                 <span className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded ${
-                                  isActiveSprint ? 'bg-orange-600 text-white' : 'bg-neutral-200 text-neutral-700'
+                                  isSelected 
+                                    ? 'bg-neutral-800 text-neutral-200' 
+                                    : isActiveSprint 
+                                      ? 'bg-neutral-900 text-white' 
+                                      : 'bg-neutral-200 text-neutral-700'
                                 }`}>
                                   W{sprint.sprintNumber}
                                 </span>
-                                <span className="font-semibold text-neutral-900 truncate">
+                                <span className={`font-semibold truncate ${isSelected ? 'text-white' : 'text-neutral-900'}`}>
                                   {sprint.themeTitle.split(':')[1]?.trim() || sprint.themeTitle}
                                 </span>
                               </div>
-                              <p className="text-[10px] text-neutral-400 truncate mt-0.5">
+                              <p className={`text-[10px] truncate mt-0.5 ${isSelected ? 'text-neutral-300' : 'text-neutral-400'}`}>
                                 {sprint.startDate} – {sprint.endDate}
                               </p>
                             </div>
-                            <span className="text-[10px] font-mono text-neutral-400 shrink-0 mt-0.5">
+                            <span className={`text-[10px] font-mono shrink-0 mt-0.5 ${isSelected ? 'text-neutral-300' : 'text-neutral-400'}`}>
                               {sprint.totalContributions} posts
                             </span>
                           </button>
@@ -389,15 +393,15 @@ function NurtureApp() {
                         onClick={() => handleSelectWeek('all')}
                         className={`w-full text-left p-2 rounded-lg text-xs flex items-center justify-between transition-colors border ${
                           selectedWeek === 'all'
-                            ? 'bg-orange-50 text-orange-950 font-semibold border-orange-300'
+                            ? 'bg-neutral-900 text-white font-semibold border-neutral-900 shadow-2xs'
                             : 'border-transparent text-neutral-700 hover:bg-neutral-100 hover:border-neutral-200'
                         }`}
                       >
                         <div className="flex items-center gap-1.5">
-                          <Layers className="w-3.5 h-3.5 text-neutral-500" />
+                          <Layers className={`w-3.5 h-3.5 ${selectedWeek === 'all' ? 'text-white' : 'text-neutral-500'}`} />
                           <span>View All Weeks Combined History</span>
                         </div>
-                        <span className="text-[10px] font-mono text-neutral-400">All</span>
+                        <span className={`text-[10px] font-mono ${selectedWeek === 'all' ? 'text-neutral-300' : 'text-neutral-400'}`}>All</span>
                       </button>
                     </div>
                   </div>
@@ -465,23 +469,23 @@ function NurtureApp() {
                 placeholder="Search reflections..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-44 lg:w-52 pl-8 pr-7 py-1.5 rounded-lg bg-white/70 backdrop-blur-md border border-neutral-300 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white transition-all shadow-2xs"
+                className="w-44 lg:w-52 pl-8 pr-7 py-1.5 rounded-lg bg-white/70 backdrop-blur-md border border-neutral-300 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white transition-all shadow-2xs"
               />
               <kbd className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[9px] font-mono text-neutral-400 bg-neutral-200/80 px-1.5 py-0.2 rounded pointer-events-none">
                 /
               </kbd>
             </div>
 
-            {/* Streak Pill */}
-            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-lg bg-orange-50/80 backdrop-blur-md border border-orange-300 text-orange-700 text-xs font-bold font-mono shadow-2xs hover:bg-orange-100/70 transition-colors">
-              <Flame className="w-3.5 h-3.5 fill-current text-orange-600" />
+            {/* Streak Pill (Amber flame = state indicator) */}
+            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/80 backdrop-blur-md border border-neutral-300 text-neutral-800 text-xs font-bold font-mono shadow-2xs hover:bg-neutral-100 transition-colors">
+              <Flame className="w-3.5 h-3.5 fill-current text-amber-500" />
               <span>5d Streak</span>
             </div>
 
-            {/* Notifications Bell */}
+            {/* Notifications Bell (Amber dot = pending notice state) */}
             <button className="p-2 rounded-lg hover:bg-neutral-100 text-neutral-600 hover:text-neutral-950 transition-colors relative">
               <Bell className="w-4 h-4" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-orange-600 ring-2 ring-white" />
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500 ring-2 ring-white" />
             </button>
 
             {/* Profile Avatar (Click to open Settings) */}
@@ -497,7 +501,7 @@ function NurtureApp() {
               <img
                 src={currentUser.avatar}
                 alt={currentUser.name}
-                className="w-8 h-8 rounded-full object-cover border border-neutral-300 ring-2 ring-neutral-200 group-hover:ring-orange-300 transition-all cursor-pointer"
+                className="w-8 h-8 rounded-full object-cover border border-neutral-300 ring-2 ring-neutral-200 group-hover:ring-neutral-400 transition-all cursor-pointer"
               />
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
             </button>
@@ -506,22 +510,22 @@ function NurtureApp() {
         </div>
       </header>
 
-      {/* ── 2. FLOATING ANNOUNCEMENT BANNER (Bounded inside max-width) ── */}
+      {/* ── 2. FLOATING ANNOUNCEMENT BANNER (Amber warning state) ── */}
       {announcement.isActive && !isBannerDismissed && (
         <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 pt-16">
-          <div className="py-2.5 px-4 rounded-xl text-xs font-medium flex items-center justify-between border glass-card-sharp bg-gradient-to-r from-orange-50/90 via-amber-50/80 to-orange-50/90 border-orange-300 text-neutral-900 shadow-2xs">
+          <div className="py-2.5 px-4 rounded-xl text-xs font-medium flex items-center justify-between border glass-card-sharp bg-gradient-to-r from-amber-50/90 via-amber-50/70 to-amber-50/90 border-amber-300 text-neutral-900 shadow-2xs">
             <div className="flex items-center gap-2.5 min-w-0 pr-4">
-              <span className="p-1 rounded-lg bg-orange-100/90 text-orange-800 shrink-0 border border-orange-200">
+              <span className="p-1 rounded-lg bg-amber-100 text-amber-800 shrink-0 border border-amber-200">
                 <Megaphone className="w-3.5 h-3.5" />
               </span>
               <span className="truncate text-xs">
-                <strong className="text-orange-950 font-semibold mr-1.5">Announcement:</strong>
+                <strong className="text-amber-950 font-semibold mr-1.5">Announcement:</strong>
                 <span className="text-neutral-800">{announcement.message}</span>
               </span>
             </div>
             <button
               onClick={() => setIsBannerDismissed(true)}
-              className="p-1 rounded-lg text-neutral-400 hover:text-neutral-800 hover:bg-orange-100/60 transition-colors shrink-0 cursor-pointer"
+              className="p-1 rounded-lg text-neutral-400 hover:text-neutral-800 hover:bg-amber-100/60 transition-colors shrink-0 cursor-pointer"
               title="Dismiss announcement"
             >
               <X className="w-3.5 h-3.5" />
@@ -560,18 +564,18 @@ function NurtureApp() {
             <>
               {/* HISTORICAL ARCHIVE NOTICE (When viewing a previous week) */}
               {selectedWeek !== 12 && (
-                <div className="p-3.5 rounded-xl glass-card-sharp bg-gradient-to-r from-orange-50/90 via-amber-50/80 to-orange-50/90 border border-orange-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs animate-in fade-in">
+                <div className="p-3.5 rounded-xl glass-card-sharp bg-white border border-neutral-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs animate-in fade-in">
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <span className="p-2 rounded-lg bg-orange-100 text-orange-800 shrink-0 border border-orange-200">
+                    <span className="p-2 rounded-lg bg-neutral-100 text-neutral-800 shrink-0 border border-neutral-200">
                       <Archive className="w-4 h-4" />
                     </span>
                     <div className="min-w-0">
-                      <p className="text-xs font-bold text-orange-950 truncate">
+                      <p className="text-xs font-bold text-neutral-900 truncate">
                         {selectedWeek === 'all'
                           ? 'Browsing Combined Sprints History'
                           : `Viewing Historical Sprint #${activeSprint.sprintNumber}: ${activeSprint.themeTitle}`}
                       </p>
-                      <p className="text-[11px] text-orange-800/80 truncate">
+                      <p className="text-[11px] text-neutral-500 truncate">
                         {selectedWeek === 'all'
                           ? 'All community posts across past and present weeks'
                           : `${activeSprint.startDate} to ${activeSprint.endDate} · ${activeSprint.totalContributions} Contributions`}
@@ -581,7 +585,7 @@ function NurtureApp() {
 
                   <button
                     onClick={() => handleSelectWeek(12)}
-                    className="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-semibold text-xs transition-all shrink-0 flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white font-semibold text-xs transition-all shrink-0 flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                   >
                     <span>Back to Week 12</span>
                     <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
@@ -592,7 +596,7 @@ function NurtureApp() {
               {/* 1. Quick Week Timeline Selector Strip */}
               <div className="p-2.5 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs flex items-center justify-between gap-2 overflow-x-auto">
                 <div className="flex items-center gap-1.5 text-[11px] font-semibold text-neutral-700 shrink-0 pl-1">
-                  <History className="w-3.5 h-3.5 text-orange-600" />
+                  <History className="w-3.5 h-3.5 text-neutral-500" />
                   <span>Weeks:</span>
                 </div>
 
@@ -609,13 +613,13 @@ function NurtureApp() {
                           isSelected
                             ? 'bg-neutral-900 text-white border-neutral-900 shadow-2xs'
                             : isCurrentActive
-                              ? 'bg-orange-50/90 text-orange-800 border-orange-300 hover:bg-orange-100/70'
+                              ? 'bg-neutral-100 text-neutral-900 border-neutral-400 hover:bg-neutral-200/80 font-bold'
                               : 'bg-white/80 text-neutral-700 border-neutral-300 hover:bg-neutral-100 hover:text-neutral-950'
                         }`}
                       >
                         <span>Week {sprint.sprintNumber}</span>
                         {isCurrentActive && (
-                          <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-orange-400' : 'bg-orange-600'} animate-pulse`} />
+                          <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-emerald-400' : 'bg-emerald-500'} animate-pulse`} />
                         )}
                       </button>
                     )
@@ -682,7 +686,7 @@ function NurtureApp() {
                     onClick={() => setSelectedTag(null)}
                     className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono transition-colors shrink-0 cursor-pointer border ${
                       selectedTag === null
-                        ? 'bg-orange-600 border-orange-600 text-white font-semibold shadow-2xs'
+                        ? 'bg-neutral-900 border-neutral-900 text-white font-semibold shadow-2xs'
                         : 'border-neutral-200 text-neutral-600 hover:text-neutral-900 bg-neutral-100 hover:bg-neutral-200/60'
                     }`}
                   >
@@ -694,7 +698,7 @@ function NurtureApp() {
                       onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
                       className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono border transition-colors shrink-0 cursor-pointer ${
                         selectedTag === tag
-                          ? 'bg-orange-50 border-orange-400 text-orange-800 font-bold'
+                          ? 'bg-neutral-900 border-neutral-900 text-white font-bold shadow-2xs'
                           : 'bg-white/80 border-neutral-300 text-neutral-700 hover:border-neutral-400 hover:text-neutral-950 hover:bg-white'
                       }`}
                     >
@@ -799,7 +803,7 @@ function NurtureApp() {
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2 px-4 py-2.5 rounded-lg bg-neutral-950/90 backdrop-blur-xl border border-neutral-800 text-white text-xs font-semibold shadow-xl animate-in fade-in slide-in-from-bottom-2">
-          <CheckCircle className="w-4 h-4 text-orange-400 shrink-0" />
+          <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}

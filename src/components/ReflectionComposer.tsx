@@ -263,7 +263,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
                 title="Add Scripture"
               >
-                <BookOpen className="w-4 h-4 text-orange-600" />
+                <BookOpen className="w-4 h-4 text-neutral-700" />
                 <span className="hidden sm:inline">Scripture</span>
               </button>
 
@@ -302,7 +302,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
             <button
               type="button"
               onClick={() => setIsExpanded(true)}
-              className="px-5 py-1.5 rounded-full bg-orange-600 hover:bg-orange-500 active:scale-95 text-white font-semibold text-xs shadow-xs transition-all flex items-center gap-1.5"
+              className="px-5 py-1.5 rounded-full bg-neutral-900 hover:bg-neutral-800 active:scale-95 text-white font-semibold text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <span>Post</span>
             </button>
@@ -317,52 +317,52 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
               <button
                 type="button"
                 onClick={() => setActiveTab('scripture')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === 'scripture'
-                    ? 'bg-white text-neutral-900 shadow-xs'
+                    ? 'bg-neutral-900 text-white shadow-xs'
                     : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
-                <BookOpen className="w-3.5 h-3.5 text-orange-600" />
+                <BookOpen className={`w-3.5 h-3.5 ${activeTab === 'scripture' ? 'text-white' : 'text-neutral-600'}`} />
                 <span>Bible Verse</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setActiveTab('reflection')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === 'reflection'
-                    ? 'bg-white text-neutral-900 shadow-xs'
+                    ? 'bg-neutral-900 text-white shadow-xs'
                     : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
-                <PenTool className="w-3.5 h-3.5 text-neutral-700" />
+                <PenTool className={`w-3.5 h-3.5 ${activeTab === 'reflection' ? 'text-white' : 'text-neutral-600'}`} />
                 <span>Reflection</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setActiveTab('media')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === 'media'
-                    ? 'bg-white text-neutral-900 shadow-xs'
+                    ? 'bg-neutral-900 text-white shadow-xs'
                     : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
-                <Film className="w-3.5 h-3.5 text-neutral-700" />
+                <Film className={`w-3.5 h-3.5 ${activeTab === 'media' ? 'text-white' : 'text-neutral-600'}`} />
                 <span>Video/Reel</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setActiveTab('voice')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === 'voice'
-                    ? 'bg-white text-neutral-900 shadow-xs'
+                    ? 'bg-neutral-900 text-white shadow-xs'
                     : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
-                <Headphones className="w-3.5 h-3.5 text-neutral-700" />
+                <Headphones className={`w-3.5 h-3.5 ${activeTab === 'voice' ? 'text-white' : 'text-neutral-600'}`} />
                 <span>Podcast/Audio</span>
               </button>
             </div>
@@ -387,7 +387,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                     placeholder="Scripture Reference (e.g. Colossians 3:23-24)"
                     value={scriptureRef}
                     onChange={(e) => setScriptureRef(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
+                    className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white transition-all"
                     required
                   />
                 </div>
@@ -395,7 +395,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                   <select
                     value={bibleVersion}
                     onChange={(e) => setBibleVersion(e.target.value as BibleVersion)}
-                    className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
+                    className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white transition-all"
                   >
                     <option value="NIV">NIV - New International</option>
                     <option value="ESV">ESV - English Standard</option>
@@ -412,7 +412,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 placeholder="Paste or write the scripture text here..."
                 value={scriptureVerse}
                 onChange={(e) => setScriptureVerse(e.target.value)}
-                className="w-full p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 text-sm font-serif italic text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white transition-all leading-relaxed"
+                className="w-full p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 text-sm font-serif italic text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white transition-all leading-relaxed"
                 required
               />
             </div>
@@ -426,7 +426,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 placeholder="Title / Key Theme (Optional, e.g. Greeting with Intentionality)"
                 value={reflectionTitle}
                 onChange={(e) => setReflectionTitle(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white"
+                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white"
               />
 
               <div className="relative">
@@ -435,7 +435,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                   placeholder="Share personal insights, Sunday experiences, or encouragement for our hospitality team..."
                   value={reflectionContent}
                   onChange={(e) => setReflectionContent(e.target.value)}
-                  className="w-full p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white leading-relaxed"
+                  className="w-full p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white leading-relaxed"
                   required
                 />
                 <div className="flex items-center justify-between text-[11px] text-neutral-400 px-1 pt-1">
@@ -443,26 +443,26 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                     <button
                       type="button"
                       onClick={() => setReflectionContent((c) => c + ' **bold** ')}
-                      className="hover:text-neutral-700"
+                      className="hover:text-neutral-700 cursor-pointer"
                     >
                       <Bold className="w-3 h-3" />
                     </button>
                     <button
                       type="button"
                       onClick={() => setReflectionContent((c) => c + ' *italic* ')}
-                      className="hover:text-neutral-700"
+                      className="hover:text-neutral-700 cursor-pointer"
                     >
                       <Italic className="w-3 h-3" />
                     </button>
                     <button
                       type="button"
                       onClick={() => setReflectionContent((c) => c + '\n> "Quote"\n')}
-                      className="hover:text-neutral-700"
+                      className="hover:text-neutral-700 cursor-pointer"
                     >
                       <Quote className="w-3 h-3" />
                     </button>
                   </div>
-                  <span>{reflectionContent.length} chars</span>
+                  <span className="font-mono">{reflectionContent.length} chars</span>
                 </div>
               </div>
             </div>
@@ -478,16 +478,16 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                   placeholder="Paste YouTube, Instagram Reel, or video URL..."
                   value={mediaUrlInput}
                   onChange={(e) => setMediaUrlInput(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white"
+                  className="w-full pl-9 pr-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white"
                   required
                 />
               </div>
 
               {mediaTypeDetected && (
-                <div className="p-3 rounded-xl bg-orange-50/70 border border-orange-200/80 flex items-center justify-between">
+                <div className="p-3 rounded-xl bg-neutral-100 border border-neutral-300 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Video className="w-4 h-4 text-orange-600" />
-                    <span className="text-xs font-semibold text-orange-950">
+                    <Video className="w-4 h-4 text-neutral-700" />
+                    <span className="text-xs font-semibold text-neutral-900">
                       Detected {mediaTypeDetected.toUpperCase()} Link
                     </span>
                   </div>
@@ -496,7 +496,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                     value={mediaTitleCustom}
                     onChange={(e) => setMediaTitleCustom(e.target.value)}
                     placeholder="Custom resource title"
-                    className="text-xs px-2.5 py-1 rounded-lg bg-white border border-orange-200 text-neutral-800 focus:outline-none"
+                    className="text-xs px-2.5 py-1 rounded-lg bg-white border border-neutral-300 text-neutral-800 focus:outline-none focus:border-neutral-900"
                   />
                 </div>
               )}
@@ -506,7 +506,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 placeholder="Takeaway note (Why should the team watch this?)"
                 value={mediaDescription}
                 onChange={(e) => setMediaDescription(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white"
+                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white"
               />
             </div>
           )}
@@ -525,11 +525,11 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                         }
                       : () => setIsRecording(true)
                   }
-                  className={`w-12 h-12 rounded-full mx-auto flex items-center justify-center transition-all ${
+                  className={`w-12 h-12 rounded-full mx-auto flex items-center justify-center transition-all cursor-pointer ${
                     isRecording
-                      ? 'bg-red-500 text-white animate-pulse shadow-md'
+                      ? 'bg-red-600 text-white animate-pulse shadow-md'
                       : recordedAudioReady
-                        ? 'bg-orange-600 text-white'
+                        ? 'bg-emerald-600 text-white'
                         : 'bg-white text-neutral-700 border border-neutral-300 hover:bg-neutral-100'
                   }`}
                 >
@@ -550,7 +550,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 placeholder="Audio Title (e.g. 1-Minute Sunday Welcome Prayer)"
                 value={voiceTitle}
                 onChange={(e) => setVoiceTitle(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-orange-500 focus:bg-white"
+                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white"
               />
             </div>
           )}
@@ -568,10 +568,10 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                     key={tag}
                     type="button"
                     onClick={() => toggleTag(tag)}
-                    className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono border transition-colors ${
+                    className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono border transition-colors cursor-pointer ${
                       isSelected
-                        ? 'bg-orange-50 border-orange-300 text-orange-700 font-semibold'
-                        : 'bg-neutral-50 border-neutral-200 text-neutral-500 hover:bg-neutral-100'
+                        ? 'bg-neutral-900 border-neutral-900 text-white font-semibold shadow-2xs'
+                        : 'bg-neutral-50 border-neutral-200 text-neutral-600 hover:bg-neutral-100'
                     }`}
                   >
                     {tag}
@@ -584,8 +584,8 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
               <button
                 type="button"
                 onClick={() => setIsAnonymous(!isAnonymous)}
-                className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-lg transition-colors border ${
-                  isAnonymous ? 'bg-neutral-200 border-neutral-300 text-neutral-800' : 'border-neutral-200 text-neutral-600 hover:bg-neutral-100'
+                className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-lg transition-colors border cursor-pointer ${
+                  isAnonymous ? 'bg-neutral-900 border-neutral-900 text-white' : 'border-neutral-200 text-neutral-600 hover:bg-neutral-100'
                 }`}
                 title="Post without showing your name"
               >
@@ -595,7 +595,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
 
               <button
                 type="submit"
-                className="px-5 py-2 rounded-full bg-orange-600 hover:bg-orange-500 active:scale-95 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1.5"
+                className="px-5 py-2 rounded-full bg-neutral-900 hover:bg-neutral-800 active:scale-95 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Publish</span>
