@@ -44,7 +44,6 @@ import {
   Search,
   CheckCircle,
   Bell,
-  Filter,
   Flame,
   Sprout,
   Sparkles,
@@ -125,7 +124,6 @@ function NurtureApp() {
   // Filter & Search State
   const [feedViewMode, setFeedViewMode] = useState<'all' | 'newest' | 'trending'>('newest')
   const [selectedFilter, setSelectedFilter] = useState<ContentType | 'all'>('all')
-  const [selectedTag, setSelectedTag] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
 
   // Modals & UI Feedback
@@ -263,8 +261,6 @@ function NurtureApp() {
         }
         // Content filter
         if (selectedFilter !== 'all' && card.type !== selectedFilter) return false
-        // Tag filter
-        if (selectedTag && !card.tags.includes(selectedTag)) return false
         // Search query
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase()
@@ -272,8 +268,7 @@ function NurtureApp() {
           const matchAuthor = card.author.name.toLowerCase().includes(q)
           const matchTitle = card.title?.toLowerCase().includes(q) || false
           const matchRef = card.scriptureReference?.toLowerCase().includes(q) || false
-          const matchTag = card.tags.some((t) => t.toLowerCase().includes(q))
-          if (!matchContent && !matchAuthor && !matchTitle && !matchRef && !matchTag) return false
+          if (!matchContent && !matchAuthor && !matchTitle && !matchRef) return false
         }
         return true
       })
@@ -287,7 +282,7 @@ function NurtureApp() {
         }
         return 0
       })
-  }, [cards, selectedWeek, selectedFilter, selectedTag, searchQuery, feedViewMode])
+  }, [cards, selectedWeek, selectedFilter, searchQuery, feedViewMode])
 
   const filterPills: Array<{ id: ContentType | 'all'; label: string; icon: React.ReactNode }> = [
     { id: 'all',        label: 'All',        icon: <Layers   className="w-3.5 h-3.5" /> },
@@ -296,8 +291,6 @@ function NurtureApp() {
     { id: 'media',      label: 'Videos',     icon: <Film     className="w-3.5 h-3.5" /> },
     { id: 'voice',      label: 'Audio Notes',icon: <Headphones className="w-3.5 h-3.5" /> },
   ]
-
-  const availableTags = ['#Scripture','#Hospitality','#Insight','#Leadership','#Prayer','#Media','#Excellence']
 
   return (
     <div className="min-h-screen bg-[#fafafa] dark:bg-[#09090b] text-neutral-900 dark:text-neutral-100 font-sans selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-neutral-950 transition-colors duration-200">
@@ -697,36 +690,6 @@ function NurtureApp() {
                   <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 whitespace-nowrap hidden sm:inline font-mono">
                     {filteredCards.length} reflections
                   </span>
-                </div>
-
-                {/* Hashtag Filter Strip */}
-                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex items-center gap-1 shrink-0">
-                    <Filter className="w-3 h-3" /> Tags:
-                  </span>
-                  <button
-                    onClick={() => setSelectedTag(null)}
-                    className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono transition-colors shrink-0 cursor-pointer border ${
-                      selectedTag === null
-                        ? 'bg-neutral-900 dark:bg-white border-neutral-900 dark:border-white text-white dark:text-neutral-950 font-semibold shadow-2xs'
-                        : 'border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200/60 dark:hover:bg-neutral-800'
-                    }`}
-                  >
-                    All
-                  </button>
-                  {availableTags.map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-                      className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono border transition-colors shrink-0 cursor-pointer ${
-                        selectedTag === tag
-                          ? 'bg-neutral-900 dark:bg-white border-neutral-900 dark:border-white text-white dark:text-neutral-950 font-bold shadow-2xs'
-                          : 'bg-white/80 dark:bg-neutral-900/80 border-neutral-300 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-neutral-400 dark:hover:border-neutral-700 hover:text-neutral-950 dark:hover:text-white hover:bg-white dark:hover:bg-neutral-800'
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
                 </div>
               </div>
 

@@ -330,36 +330,6 @@ export const SprintHeader: React.FC<SprintHeaderProps> = ({
             </button>
           </div>
         </div>
-
-        {/* Tag Filters Row */}
-        <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 text-xs">
-          <span className="text-[11px] uppercase tracking-wider font-bold text-zinc-500 flex items-center gap-1">
-            <Filter className="w-3 h-3" /> Tags:
-          </span>
-          <button
-            onClick={() => onSelectTag(null)}
-            className={`px-2.5 py-0.5 rounded-lg text-[11px] font-mono transition-colors ${
-              selectedTag === null
-                ? 'bg-zinc-700 text-white font-semibold'
-                : 'text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            All
-          </button>
-          {tagsList.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => onSelectTag(selectedTag === tag ? null : tag)}
-              className={`px-2.5 py-0.5 rounded-lg text-[11px] font-mono border transition-all ${
-                selectedTag === tag
-                  ? 'bg-[#BF00FF]/20 border-[#BF00FF] text-[#BF00FF] font-bold glow-purple-sm'
-                  : 'bg-black/30 border-white/5 text-zinc-400 hover:border-white/20 hover:text-zinc-200'
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
       </div>
     </header>
   )
