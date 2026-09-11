@@ -1,5 +1,6 @@
-﻿import { createFileRoute } from '@tanstack/react-router'
-import React, { useState, useMemo } from 'react'
+'use client'
+
+﻿import React, { useState, useMemo } from 'react'
 import {
   currentSprint as defaultSprint,
   archivedSprints as defaultArchivedSprints,
@@ -56,9 +57,7 @@ import {
   Settings
 } from 'lucide-react'
 
-export const Route = createFileRoute('/')({
-  component: NurtureApp,
-})
+export default NurtureApp
 
 function NurtureApp() {
   // Navigation & Community State

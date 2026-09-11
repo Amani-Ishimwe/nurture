@@ -219,11 +219,11 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           onClick={() => setActiveAdminTab('moderation')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'moderation'
-              ? 'bg-white text-neutral-900 shadow-xs border border-neutral-200'
+              ? 'bg-neutral-900 text-white shadow-xs'
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <Pin className={`w-3.5 h-3.5 ${activeAdminTab === 'curation' ? 'text-white' : 'text-neutral-500'}`} />
+          <Pin className={`w-3.5 h-3.5 ${activeAdminTab === 'moderation' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Feed Curator & Broadcast</span>
         </button>
 
@@ -235,8 +235,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <BarChart3 className="w-3.5 h-3.5 text-neutral-700" />
-          <span>Member Analytics</span>
+          <BarChart3 className={`w-3.5 h-3.5 ${activeAdminTab === 'analytics' ? 'text-white' : 'text-neutral-500'}`} />
         </button>
       </div>
 

@@ -8,6 +8,9 @@ dist/
 .tanstack/
 .nitro/
 .vite/
+.next/
+out/
+*.tsbuildinfo
 
 # Environment Variables & Secrets
 .env

@@ -179,11 +179,11 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           onClick={() => setActiveTab('profile')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'profile'
-              ? 'bg-white text-neutral-900 shadow-xs border border-neutral-200'
+              ? 'bg-neutral-900 text-white shadow-xs'
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <User className={`w-3.5 h-3.5 ${activeSection === 'profile' ? 'text-white' : 'text-neutral-500'}`} />
+          <User className={`w-3.5 h-3.5 ${activeTab === 'profile' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Personal Profile</span>
         </button>
 
@@ -192,11 +192,11 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           onClick={() => setActiveTab('workspace')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'workspace'
-              ? 'bg-white text-neutral-900 shadow-xs border border-neutral-200'
+              ? 'bg-neutral-900 text-white shadow-xs'
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <Building2 className={`w-3.5 h-3.5 ${activeSection === 'workspace' ? 'text-white' : 'text-neutral-500'}`} />
+          <Building2 className={`w-3.5 h-3.5 ${activeTab === 'workspace' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Workspace Settings</span>
         </button>
 
@@ -205,11 +205,11 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           onClick={() => setActiveTab('notifications')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'notifications'
-              ? 'bg-white text-neutral-900 shadow-xs border border-neutral-200'
+              ? 'bg-neutral-900 text-white shadow-xs'
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
-          <Bell className={`w-3.5 h-3.5 ${activeSection === 'notifications' ? 'text-white' : 'text-neutral-500'}`} />
+          <Bell className={`w-3.5 h-3.5 ${activeTab === 'notifications' ? 'text-white' : 'text-neutral-500'}`} />
           <span>Devotion & Alerts</span>
         </button>
       </div>

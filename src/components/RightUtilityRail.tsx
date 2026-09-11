@@ -76,7 +76,7 @@ export const RightUtilityRail: React.FC<RightUtilityRailProps> = ({
               <span className="text-[10px] text-neutral-400 font-medium">Sprint Active</span>
             </div>
             <p className="text-xs font-bold text-neutral-900 leading-snug truncate mt-0.5">
-              {sprint.theme}
+              {sprint.themeTitle}
             </p>
             <p className="text-[11px] text-neutral-500 mt-0.5 line-clamp-2 leading-relaxed">
               {sprint.anchorScripture}
