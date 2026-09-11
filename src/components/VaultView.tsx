@@ -37,17 +37,17 @@ export const VaultView: React.FC<VaultViewProps> = ({
   return (
     <div className="w-full space-y-5">
       {/* Header & Search */}
-      <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs space-y-4">
+      <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-800 border border-neutral-200">
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700">
                 Study Archives
               </span>
-              <span className="text-xs text-neutral-400 font-mono">{allSprints.length} Sprints Vaulted</span>
+              <span className="text-xs text-neutral-400 dark:text-neutral-500 font-mono">{allSprints.length} Sprints Vaulted</span>
             </div>
-            <h2 className="text-xl font-bold text-neutral-900 mt-1">Vault & Past Studies</h2>
-            <p className="text-xs text-neutral-500">
+            <h2 className="text-xl font-bold text-neutral-900 dark:text-white mt-1">Vault & Past Studies</h2>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">
               Browse, search, and review past 7-day study sprints and community contributions.
             </p>
           </div>
@@ -59,7 +59,7 @@ export const VaultView: React.FC<VaultViewProps> = ({
               placeholder="Search archives by scripture or theme..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 focus:bg-white shadow-2xs"
+              className="w-full pl-9 pr-3 py-2 rounded-lg bg-white/80 dark:bg-neutral-900/80 border border-neutral-300 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 focus:bg-white dark:focus:bg-neutral-900 shadow-2xs"
             />
           </div>
         </div>
@@ -75,65 +75,65 @@ export const VaultView: React.FC<VaultViewProps> = ({
               onClick={() => onSelectSprint(sprint)}
               className={`p-5 rounded-xl border transition-all cursor-pointer glass-card-sharp ${
                 isCurrent
-                  ? 'border-neutral-900 shadow-2xs ring-1 ring-neutral-800 hover:border-black'
-                  : 'border-neutral-300 shadow-2xs hover:border-neutral-400 hover:shadow-xs'
+                  ? 'border-neutral-900 dark:border-white shadow-2xs ring-1 ring-neutral-800 dark:ring-neutral-200 hover:border-black dark:hover:border-white'
+                  : 'border-neutral-300 dark:border-neutral-800 shadow-2xs hover:border-neutral-400 dark:hover:border-neutral-700 hover:shadow-xs'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span
                   className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${
                     isCurrent
-                      ? 'bg-emerald-50 border-emerald-300 text-emerald-800'
-                      : 'bg-neutral-100 border-neutral-200 text-neutral-600'
+                      ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300'
+                      : 'bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400'
                   }`}
                 >
                   {isCurrent ? 'Active Sprint' : 'Archived Vault'}
                 </span>
-                <span className="text-xs text-neutral-400 font-mono font-medium">
+                <span className="text-xs text-neutral-400 dark:text-neutral-500 font-mono font-medium">
                   Sprint #{sprint.sprintNumber}
                 </span>
               </div>
 
-              <h3 className="text-base font-bold text-neutral-900 mb-1 group-hover:text-neutral-950 transition-colors">
+              <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-1 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors">
                 {sprint.themeTitle}
               </h3>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-4 leading-relaxed">
+              <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mb-4 leading-relaxed">
                 {sprint.themeSubtitle}
               </p>
 
               {/* Anchor Reference */}
-              <div className="p-3 rounded-lg bg-white/60 border border-neutral-200 mb-4 space-y-1">
-                <span className="text-[10px] uppercase font-bold text-neutral-400 flex items-center gap-1">
-                  <BookOpen className="w-3.5 h-3.5 text-neutral-700" /> Anchor Passage
+              <div className="p-3 rounded-lg bg-white/60 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 mb-4 space-y-1">
+                <span className="text-[10px] uppercase font-bold text-neutral-400 dark:text-neutral-500 flex items-center gap-1">
+                  <BookOpen className="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300" /> Anchor Passage
                 </span>
-                <p className="text-xs font-serif italic text-neutral-800 line-clamp-2">
+                <p className="text-xs font-serif italic text-neutral-800 dark:text-neutral-200 line-clamp-2">
                   "{sprint.anchorScripture}"
                 </p>
-                <span className="text-[11px] font-semibold text-neutral-800 font-mono block text-right">
+                <span className="text-[11px] font-semibold text-neutral-800 dark:text-neutral-200 font-mono block text-right">
                   {sprint.anchorReference}
                 </span>
               </div>
 
               {/* Stats Footer & CTA */}
-              <div className="pt-3 border-t border-neutral-200/80 flex items-center justify-between text-xs text-neutral-500">
+              <div className="pt-3 border-t border-neutral-200/80 dark:border-neutral-800 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
                 <span className="flex items-center gap-1 text-[11px]">
-                  <Calendar className="w-3.5 h-3.5 text-neutral-400" />
+                  <Calendar className="w-3.5 h-3.5 text-neutral-400 dark:text-neutral-500" />
                   {sprint.startDate} – {sprint.endDate}
                 </span>
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1">
-                    <Layers className="w-3.5 h-3.5 text-neutral-400" />
+                    <Layers className="w-3.5 h-3.5 text-neutral-400 dark:text-neutral-500" />
                     {sprint.totalContributions}
                   </span>
                   <span className="flex items-center gap-1">
-                    <Mic className="w-3.5 h-3.5 text-neutral-400" />
+                    <Mic className="w-3.5 h-3.5 text-neutral-400 dark:text-neutral-500" />
                     {sprint.voiceMemosCount}
                   </span>
                 </div>
               </div>
 
               {/* Action Trigger */}
-              <div className="mt-3 pt-2 border-t border-neutral-200/80 flex items-center justify-between text-xs font-semibold text-neutral-700 group-hover:text-neutral-950">
+              <div className="mt-3 pt-2 border-t border-neutral-200/80 dark:border-neutral-800 flex items-center justify-between text-xs font-semibold text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-950 dark:group-hover:text-white">
                 <span>Explore Week's Reflections & Media</span>
                 <ChevronRight className="w-4 h-4" />
               </div>
@@ -144,4 +144,3 @@ export const VaultView: React.FC<VaultViewProps> = ({
     </div>
   )
 }
-

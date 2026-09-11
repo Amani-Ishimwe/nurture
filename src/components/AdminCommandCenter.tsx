@@ -156,28 +156,28 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
   return (
     <div className="w-full space-y-5">
       {/* Top Header */}
-      <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-900 border border-neutral-300 flex items-center gap-1.5 shadow-2xs">
+            <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 flex items-center gap-1.5 shadow-2xs">
               <Crown className="w-3 h-3 text-amber-500 fill-amber-500" />
               Workspace Owner & Admin Access
             </span>
-            <span className="text-xs text-neutral-400 font-mono">Restricted Command Panel</span>
+            <span className="text-xs text-neutral-400 dark:text-neutral-500 font-mono">Restricted Command Panel</span>
           </div>
-          <h2 className="text-xl font-bold text-neutral-900 mt-1">Admin Command Center</h2>
-          <p className="text-xs text-neutral-500">
+          <h2 className="text-xl font-bold text-neutral-900 dark:text-white mt-1">Admin Command Center</h2>
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">
             Manage sprint lifecycles, schedule Google Meet discussions, and moderate team contributions.
           </p>
         </div>
 
         <button
           onClick={handleExportSummary}
-          className="px-4 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-xs flex items-center gap-2 shadow-xs transition-colors shrink-0 cursor-pointer"
+          className="px-4 py-2 rounded-lg bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-950 font-bold text-xs flex items-center gap-2 shadow-xs transition-colors shrink-0 cursor-pointer"
         >
           {copiedSummary ? (
             <>
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              <Check className="w-3.5 h-3.5 text-emerald-400 dark:text-emerald-600" />
               <span>Copied for Slack!</span>
             </>
           ) : (
@@ -190,16 +190,16 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
       </div>
 
       {/* Admin Segmented Nav Tabs */}
-      <div className="flex items-center gap-1.5 p-1 rounded-lg glass-panel-sharp border border-neutral-300 overflow-x-auto">
+      <div className="flex items-center gap-1.5 p-1 rounded-lg glass-panel-sharp border border-neutral-300 dark:border-neutral-800 overflow-x-auto">
         <button
           onClick={() => setActiveAdminTab('sprint')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'sprint'
-              ? 'bg-neutral-900 text-white shadow-xs'
-              : 'text-neutral-600 hover:text-neutral-900'
+              ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
           }`}
         >
-          <Calendar className={`w-3.5 h-3.5 ${activeAdminTab === 'sprint' ? 'text-white' : 'text-neutral-500'}`} />
+          <Calendar className={`w-3.5 h-3.5 ${activeAdminTab === 'sprint' ? 'text-white dark:text-neutral-950' : 'text-neutral-500 dark:text-neutral-400'}`} />
           <span>Sprint Lifecycle</span>
         </button>
 
@@ -207,11 +207,11 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           onClick={() => setActiveAdminTab('meeting')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'meeting'
-              ? 'bg-neutral-900 text-white shadow-xs'
-              : 'text-neutral-600 hover:text-neutral-900'
+              ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
           }`}
         >
-          <Video className={`w-3.5 h-3.5 ${activeAdminTab === 'meeting' ? 'text-white' : 'text-neutral-500'}`} />
+          <Video className={`w-3.5 h-3.5 ${activeAdminTab === 'meeting' ? 'text-white dark:text-neutral-950' : 'text-neutral-500 dark:text-neutral-400'}`} />
           <span>Meeting Scheduler</span>
         </button>
 
@@ -219,11 +219,11 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           onClick={() => setActiveAdminTab('moderation')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'moderation'
-              ? 'bg-neutral-900 text-white shadow-xs'
-              : 'text-neutral-600 hover:text-neutral-900'
+              ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
           }`}
         >
-          <Pin className={`w-3.5 h-3.5 ${activeAdminTab === 'moderation' ? 'text-white' : 'text-neutral-500'}`} />
+          <Pin className={`w-3.5 h-3.5 ${activeAdminTab === 'moderation' ? 'text-white dark:text-neutral-950' : 'text-neutral-500 dark:text-neutral-400'}`} />
           <span>Feed Curator & Broadcast</span>
         </button>
 
@@ -231,116 +231,117 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           onClick={() => setActiveAdminTab('analytics')}
           className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'analytics'
-              ? 'bg-neutral-900 text-white shadow-xs'
-              : 'text-neutral-600 hover:text-neutral-900'
+              ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
           }`}
         >
-          <BarChart3 className={`w-3.5 h-3.5 ${activeAdminTab === 'analytics' ? 'text-white' : 'text-neutral-500'}`} />
+          <BarChart3 className={`w-3.5 h-3.5 ${activeAdminTab === 'analytics' ? 'text-white dark:text-neutral-950' : 'text-neutral-500 dark:text-neutral-400'}`} />
+          <span>Analytics</span>
         </button>
       </div>
 
       {/* TAB 1: SPRINT LIFECYCLE MANAGER */}
       {activeAdminTab === 'sprint' && (
         <div className="space-y-4">
-          <form onSubmit={handleSaveSprint} className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs space-y-4">
-            <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
+          <form onSubmit={handleSaveSprint} className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-4">
+            <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3">
               <div>
-                <h3 className="text-sm font-bold text-neutral-900">Sprint Lifecycle & Configuration</h3>
-                <p className="text-xs text-neutral-500">Edit active study theme or prepare the upcoming sprint.</p>
+                <h3 className="text-sm font-bold text-neutral-900 dark:text-white">Sprint Lifecycle & Configuration</h3>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">Edit active study theme or prepare the upcoming sprint.</p>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-600">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700">
                 Sprint #{currentSprint.sprintNumber}
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-neutral-700 mb-1">
+                <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">
                   Theme Title
                 </label>
                 <input
                   type="text"
                   value={themeTitle}
                   onChange={(e) => setThemeTitle(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 focus:bg-white dark:focus:bg-neutral-900"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-neutral-700 mb-1">
+                <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">
                   Anchor Scripture Reference
                 </label>
                 <input
                   type="text"
                   value={anchorReference}
                   onChange={(e) => setAnchorReference(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 focus:bg-white dark:focus:bg-neutral-900"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-neutral-700 mb-1">
+              <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">
                 Theme Subtitle / Pastoral Goal
               </label>
               <input
                 type="text"
                 value={themeSubtitle}
                 onChange={(e) => setThemeSubtitle(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white"
+                className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 focus:bg-white dark:focus:bg-neutral-900"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-neutral-700 mb-1">
+              <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">
                 Anchor Scripture Verse Text
               </label>
               <textarea
                 rows={3}
                 value={anchorScripture}
                 onChange={(e) => setAnchorScripture(e.target.value)}
-                className="w-full p-3 rounded-xl bg-neutral-50 border border-neutral-200 text-xs font-serif italic text-neutral-800 focus:outline-none focus:border-neutral-900 focus:bg-white"
+                className="w-full p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-serif italic text-neutral-800 dark:text-neutral-200 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 focus:bg-white dark:focus:bg-neutral-900"
                 required
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-neutral-700 mb-1">
+                <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">
                   Start Date
                 </label>
                 <input
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900"
+                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-neutral-700 mb-1">
+                <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">
                   End Date
                 </label>
                 <input
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900"
+                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400"
                 />
               </div>
             </div>
 
             {/* Publication Controls */}
-            <div className="pt-3 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-3">
+            <div className="pt-3 border-t border-neutral-200 dark:border-neutral-800 flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setSprintStatus('published')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                     sprintStatus === 'published'
-                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold'
-                      : 'bg-neutral-100 text-neutral-600'
+                      ? 'bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800/60 font-bold'
+                      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
                   }`}
                 >
                   Live & Published
@@ -348,10 +349,10 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 <button
                   type="button"
                   onClick={() => setSprintStatus('draft')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                     sprintStatus === 'draft'
-                      ? 'bg-amber-100 text-amber-800 border border-amber-300 font-bold'
-                      : 'bg-neutral-100 text-neutral-600'
+                      ? 'bg-amber-100 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60 font-bold'
+                      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
                   }`}
                 >
                   Draft Mode
@@ -366,7 +367,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                       onArchiveCurrentSprint()
                     }
                   }}
-                  className="px-3.5 py-2 rounded-xl border border-red-200 text-red-700 hover:bg-red-50 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  className="px-3.5 py-2 rounded-xl border border-rose-200 dark:border-rose-900/60 text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Archive className="w-3.5 h-3.5" />
                   <span>Archive to Vault</span>
@@ -374,7 +375,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors"
+                  className="px-5 py-2 rounded-xl bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-950 text-xs font-bold shadow-xs transition-colors cursor-pointer"
                 >
                   Save Sprint Settings
                 </button>
@@ -386,36 +387,36 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
       {/* TAB 2: WEEKLY MEETING SCHEDULER */}
       {activeAdminTab === 'meeting' && (
-        <form onSubmit={handleSaveMeeting} className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs space-y-4">
-          <div className="border-b border-neutral-200 pb-3">
-            <h3 className="text-sm font-bold text-neutral-900">Weekly Discussion Meeting Scheduler</h3>
-            <p className="text-xs text-neutral-500">Configure Google Meet link, scheduled time, and team agenda.</p>
+        <form onSubmit={handleSaveMeeting} className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-4">
+          <div className="border-b border-neutral-200 dark:border-neutral-800 pb-3">
+            <h3 className="text-sm font-bold text-neutral-900 dark:text-white">Weekly Discussion Meeting Scheduler</h3>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">Configure Google Meet link, scheduled time, and team agenda.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-neutral-700 mb-1">
+              <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">
                 Google Meet or Zoom URL
               </label>
               <input
                 type="url"
                 value={meetingUrl}
                 onChange={(e) => setMeetingUrl(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white shadow-2xs"
+                className="w-full px-3 py-2 rounded-lg bg-white/80 dark:bg-neutral-900/80 border border-neutral-300 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 focus:bg-white dark:focus:bg-neutral-900 shadow-2xs"
                 placeholder="https://meet.google.com/..."
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-neutral-700 mb-1">
+              <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">
                 Meeting Time / Cadence
               </label>
               <input
                 type="text"
                 value={meetingTime}
                 onChange={(e) => setMeetingTime(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 focus:bg-white shadow-2xs"
+                className="w-full px-3 py-2 rounded-lg bg-white/80 dark:bg-neutral-900/80 border border-neutral-300 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 focus:bg-white dark:focus:bg-neutral-900 shadow-2xs"
                 placeholder="e.g. 08:00 PM EST Tonight"
                 required
               />
@@ -424,17 +425,17 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
           {/* Agenda items list */}
           <div>
-            <label className="block text-xs font-bold text-neutral-700 mb-1.5">
+            <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1.5">
               Pinned 30-Minute Agenda & Discussion Questions
             </label>
             <div className="space-y-2 mb-3">
               {agendaItems.map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between p-2.5 rounded-lg bg-white/70 border border-neutral-200 text-xs text-neutral-800 shadow-2xs">
+                <div key={idx} className="flex items-center justify-between p-2.5 rounded-lg bg-white/70 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-800 dark:text-neutral-200 shadow-2xs">
                   <span className="truncate pr-2">{item}</span>
                   <button
                     type="button"
                     onClick={() => handleRemoveAgendaItem(idx)}
-                    className="text-neutral-400 hover:text-red-600 transition-colors cursor-pointer"
+                    className="text-neutral-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
@@ -448,12 +449,12 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 value={newAgendaItem}
                 onChange={(e) => setNewAgendaItem(e.target.value)}
                 placeholder="Add agenda topic or discussion question..."
-                className="flex-1 px-3 py-1.5 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-neutral-900 shadow-2xs"
+                className="flex-1 px-3 py-1.5 rounded-lg bg-white/80 dark:bg-neutral-900/80 border border-neutral-300 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 shadow-2xs"
               />
               <button
                 type="button"
                 onClick={handleAddAgendaItem}
-                className="px-3.5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 rounded-lg bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-950 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Item</span>
@@ -461,10 +462,10 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
             </div>
           </div>
 
-          <div className="pt-2 border-t border-neutral-200 flex justify-end">
+          <div className="pt-2 border-t border-neutral-200 dark:border-neutral-800 flex justify-end">
             <button
               type="submit"
-              className="px-5 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
+              className="px-5 py-2 rounded-lg bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-950 text-xs font-bold shadow-xs transition-colors cursor-pointer"
             >
               Update Meeting & Agenda
             </button>
@@ -476,27 +477,27 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
       {activeAdminTab === 'moderation' && (
         <div className="space-y-4">
           {/* Urgent Announcement Banner Broadcast */}
-          <form onSubmit={handleSaveAnnouncement} className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs space-y-3.5">
-            <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
+          <form onSubmit={handleSaveAnnouncement} className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-3.5">
+            <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3">
               <div className="flex items-center gap-2">
-                <Megaphone className="w-4 h-4 text-amber-600" />
-                <h3 className="text-sm font-bold text-neutral-900">Broadcast Urgent Banner Announcement</h3>
+                <Megaphone className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                <h3 className="text-sm font-bold text-neutral-900 dark:text-white">Broadcast Urgent Banner Announcement</h3>
               </div>
-              <span className="text-[10px] font-mono text-neutral-400">Top of App Banner</span>
+              <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500">Top of App Banner</span>
             </div>
 
             <textarea
               rows={2}
               value={annMessage}
               onChange={(e) => setAnnMessage(e.target.value)}
-              className="w-full p-3 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-800 focus:outline-none focus:border-neutral-900 focus:bg-white leading-relaxed shadow-2xs"
+              className="w-full p-3 rounded-lg bg-white/80 dark:bg-neutral-900/80 border border-neutral-300 dark:border-neutral-700 text-xs text-neutral-800 dark:text-neutral-200 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 focus:bg-white dark:focus:bg-neutral-900 leading-relaxed shadow-2xs"
               placeholder="e.g. Reminder: Usher rehearsal this Saturday at 4 PM..."
               required
             />
 
             <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
               <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 text-xs font-semibold text-neutral-700 cursor-pointer">
+                <label className="flex items-center gap-2 text-xs font-semibold text-neutral-700 dark:text-neutral-300 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={annActive}
@@ -509,7 +510,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                 <select
                   value={annPriority}
                   onChange={(e) => setAnnPriority(e.target.value as 'normal' | 'urgent')}
-                  className="px-2.5 py-1 rounded-lg bg-white/80 border border-neutral-300 text-xs text-neutral-700 shadow-2xs"
+                  className="px-2.5 py-1 rounded-lg bg-white/80 dark:bg-neutral-900/80 border border-neutral-300 dark:border-neutral-700 text-xs text-neutral-700 dark:text-neutral-300 shadow-2xs"
                 >
                   <option value="urgent">Urgent Notice</option>
                   <option value="normal">Normal Notice</option>
@@ -518,7 +519,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
               <button
                 type="submit"
-                className="px-4 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-lg bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-950 text-xs font-bold shadow-xs transition-colors cursor-pointer"
               >
                 Save Announcement
               </button>
@@ -526,13 +527,13 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           </form>
 
           {/* Post Curation & Pinned Highlights Manager */}
-          <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs space-y-3">
-            <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
+          <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-3">
+            <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3">
               <div>
-                <h3 className="text-sm font-bold text-neutral-900">Feed Post Curation & Moderation</h3>
-                <p className="text-xs text-neutral-500">Pin up to 3 standout posts or hide inappropriate content.</p>
+                <h3 className="text-sm font-bold text-neutral-900 dark:text-white">Feed Post Curation & Moderation</h3>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">Pin up to 3 standout posts or hide inappropriate content.</p>
               </div>
-              <span className="text-xs font-semibold text-neutral-700">
+              <span className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
                 {cards.filter((c) => c.isPinned).length} of 3 Pinned
               </span>
             </div>
@@ -543,32 +544,32 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                   key={card.id}
                   className={`p-3 rounded-lg border flex items-center justify-between gap-3 text-xs transition-colors ${
                     card.isPinned
-                      ? 'bg-neutral-100/90 border-neutral-400'
+                      ? 'bg-neutral-100/90 dark:bg-neutral-800 border-neutral-400 dark:border-neutral-600'
                       : card.isHidden
-                        ? 'bg-rose-50/70 border-rose-200 opacity-60'
-                        : 'bg-white/70 border-neutral-200'
+                        ? 'bg-rose-50/70 dark:bg-rose-950/40 border-rose-200 dark:border-rose-900/60 opacity-60'
+                        : 'bg-white/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700'
                   }`}
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <span className="font-bold text-neutral-900 truncate">
+                      <span className="font-bold text-neutral-900 dark:text-white truncate">
                         {card.author.name}
                       </span>
-                      <span className="text-[10px] font-mono text-neutral-400">
+                      <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500">
                         {card.type.toUpperCase()}
                       </span>
                       {card.isPinned && (
-                        <span className="text-[10px] font-bold text-neutral-900 bg-neutral-200 px-1.5 rounded border border-neutral-300">
+                        <span className="text-[10px] font-bold text-neutral-900 dark:text-white bg-neutral-200 dark:bg-neutral-700 px-1.5 rounded border border-neutral-300 dark:border-neutral-600">
                           Pinned
                         </span>
                       )}
                       {card.isHidden && (
-                        <span className="text-[10px] font-bold text-rose-600 bg-white px-1.5 rounded border border-rose-200">
+                        <span className="text-[10px] font-bold text-rose-600 dark:text-rose-400 bg-white dark:bg-neutral-900 px-1.5 rounded border border-rose-200 dark:border-rose-800">
                           Hidden
                         </span>
                       )}
                     </div>
-                    <p className="text-[11px] text-neutral-600 truncate">{card.content}</p>
+                    <p className="text-[11px] text-neutral-600 dark:text-neutral-400 truncate">{card.content}</p>
                   </div>
 
                   <div className="flex items-center gap-1 shrink-0">
@@ -577,8 +578,8 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                       onClick={() => onTogglePinCard(card.id)}
                       className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 border transition-colors cursor-pointer ${
                         card.isPinned
-                          ? 'bg-neutral-900 text-white border-neutral-900'
-                          : 'bg-white border-neutral-300 text-neutral-700 hover:bg-neutral-100'
+                          ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 border-neutral-900 dark:border-white'
+                          : 'bg-white dark:bg-neutral-800 border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700'
                       }`}
                     >
                       <Pin className="w-3 h-3" />
@@ -591,7 +592,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                       className={`p-1.5 rounded-lg border transition-colors cursor-pointer ${
                         card.isHidden
                           ? 'bg-rose-600 text-white border-rose-600'
-                          : 'bg-white border-neutral-300 text-neutral-500 hover:text-rose-600 hover:bg-neutral-100'
+                          : 'bg-white dark:bg-neutral-800 border-neutral-300 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-neutral-100 dark:hover:bg-neutral-700'
                       }`}
                       title={card.isHidden ? 'Unhide post' : 'Hide from feed'}
                     >
@@ -607,48 +608,48 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
       {/* TAB 4: MEMBER ANALYTICS & INSIGHTS */}
       {activeAdminTab === 'analytics' && (
-        <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 shadow-2xs space-y-4">
-          <div className="border-b border-neutral-200 pb-3">
-            <h3 className="text-sm font-bold text-neutral-900">Usher Ministry Engagement Pulse</h3>
-            <p className="text-xs text-neutral-500">Live statistics and team member participation rates.</p>
+        <div className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-4">
+          <div className="border-b border-neutral-200 dark:border-neutral-800 pb-3">
+            <h3 className="text-sm font-bold text-neutral-900 dark:text-white">Usher Ministry Engagement Pulse</h3>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">Live statistics and team member participation rates.</p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-3.5 rounded-lg bg-white/70 border border-neutral-300 shadow-2xs">
-              <span className="text-[10px] uppercase font-bold text-neutral-400">Total Reflections</span>
-              <p className="text-2xl font-black text-neutral-900 mt-1">{cards.length}</p>
-              <span className="text-[10px] text-emerald-600 font-semibold">+6 today</span>
+            <div className="p-3.5 rounded-lg bg-white/70 dark:bg-neutral-900/70 border border-neutral-300 dark:border-neutral-800 shadow-2xs">
+              <span className="text-[10px] uppercase font-bold text-neutral-400 dark:text-neutral-500">Total Reflections</span>
+              <p className="text-2xl font-black text-neutral-900 dark:text-white mt-1">{cards.length}</p>
+              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">+6 today</span>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-white/70 border border-neutral-300 shadow-2xs">
-              <span className="text-[10px] uppercase font-bold text-neutral-400">Sync Attendance</span>
-              <p className="text-2xl font-black text-neutral-900 mt-1">{currentSprint.syncRatePercentage}%</p>
-              <span className="text-[10px] text-neutral-400">36 of 42 ushers</span>
+            <div className="p-3.5 rounded-lg bg-white/70 dark:bg-neutral-900/70 border border-neutral-300 dark:border-neutral-800 shadow-2xs">
+              <span className="text-[10px] uppercase font-bold text-neutral-400 dark:text-neutral-500">Sync Attendance</span>
+              <p className="text-2xl font-black text-neutral-900 dark:text-white mt-1">{currentSprint.syncRatePercentage}%</p>
+              <span className="text-[10px] text-neutral-400 dark:text-neutral-500">36 of 42 ushers</span>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-white/70 border border-neutral-300 shadow-2xs">
-              <span className="text-[10px] uppercase font-bold text-neutral-400">Audio Voice Notes</span>
-              <p className="text-2xl font-black text-neutral-900 mt-1">{currentSprint.voiceMemosCount}</p>
-              <span className="text-[10px] text-neutral-400">Shared prayers</span>
+            <div className="p-3.5 rounded-lg bg-white/70 dark:bg-neutral-900/70 border border-neutral-300 dark:border-neutral-800 shadow-2xs">
+              <span className="text-[10px] uppercase font-bold text-neutral-400 dark:text-neutral-500">Audio Voice Notes</span>
+              <p className="text-2xl font-black text-neutral-900 dark:text-white mt-1">{currentSprint.voiceMemosCount}</p>
+              <span className="text-[10px] text-neutral-400 dark:text-neutral-500">Shared prayers</span>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-white/70 border border-neutral-300 shadow-2xs">
-              <span className="text-[10px] uppercase font-bold text-neutral-400">Active Streaks</span>
-              <p className="text-2xl font-black text-neutral-900 mt-1">28</p>
-              <span className="text-[10px] text-neutral-400">3+ days streak</span>
+            <div className="p-3.5 rounded-lg bg-white/70 dark:bg-neutral-900/70 border border-neutral-300 dark:border-neutral-800 shadow-2xs">
+              <span className="text-[10px] uppercase font-bold text-neutral-400 dark:text-neutral-500">Active Streaks</span>
+              <p className="text-2xl font-black text-neutral-900 dark:text-white mt-1">28</p>
+              <span className="text-[10px] text-neutral-400 dark:text-neutral-500">3+ days streak</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-lg bg-neutral-100/80 border border-neutral-300 flex items-center justify-between shadow-2xs">
+          <div className="p-4 rounded-lg bg-neutral-100/80 dark:bg-neutral-900/80 border border-neutral-300 dark:border-neutral-800 flex items-center justify-between shadow-2xs">
             <div>
-              <h4 className="text-xs font-bold text-neutral-900">Export Clean Weekly Report</h4>
-              <p className="text-[11px] text-neutral-600 mt-0.5">
+              <h4 className="text-xs font-bold text-neutral-900 dark:text-white">Export Clean Weekly Report</h4>
+              <p className="text-[11px] text-neutral-600 dark:text-neutral-400 mt-0.5">
                 Copies a formatted Markdown recap directly to your clipboard for Slack or email.
               </p>
             </div>
             <button
               onClick={handleExportSummary}
-              className="px-3.5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-xs flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer shadow-2xs"
+              className="px-3.5 py-1.5 rounded-lg bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-950 font-bold text-xs flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer shadow-2xs"
             >
               <Copy className="w-3.5 h-3.5" />
               <span>Copy Report</span>
@@ -659,4 +660,3 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
     </div>
   )
 }
-

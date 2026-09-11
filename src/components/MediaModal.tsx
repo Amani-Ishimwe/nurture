@@ -39,12 +39,12 @@ export const MediaModal: React.FC<MediaModalProps> = ({ card, onClose }) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-3xl glass-panel rounded-3xl border border-white/20 glow-purple-sm z-10 shadow-2xl overflow-hidden my-auto"
+          className="relative w-full max-w-3xl glass-card-sharp rounded-2xl border border-neutral-300 dark:border-neutral-800 z-10 shadow-2xl overflow-hidden my-auto bg-white dark:bg-neutral-900"
         >
           {/* Header Bar */}
-          <div className="p-4 sm:p-5 flex items-center justify-between border-b border-white/10 bg-zinc-950/60">
+          <div className="p-4 sm:p-5 flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-950/70">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-[#BF00FF]/20 border border-[#BF00FF]/40 text-[#BF00FF]">
+              <div className="p-2 rounded-xl bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700">
                 {card.mediaType === 'youtube' ? (
                   <Video className="w-5 h-5" />
                 ) : card.mediaType === 'reel' ? (
@@ -54,14 +54,14 @@ export const MediaModal: React.FC<MediaModalProps> = ({ card, onClose }) => {
                 )}
               </div>
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-wider text-[#BF00FF]">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                   {card.mediaType === 'youtube'
                     ? 'YouTube Sermon Archive'
                     : card.mediaType === 'reel'
                       ? 'Community Behind-The-Scenes Reel'
                       : 'Podcast Stream'}
                 </p>
-                <h4 className="text-base sm:text-lg font-bold text-white line-clamp-1">
+                <h4 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white line-clamp-1">
                   {card.mediaTitle || 'Sprint Multimedia Resource'}
                 </h4>
               </div>
@@ -70,14 +70,14 @@ export const MediaModal: React.FC<MediaModalProps> = ({ card, onClose }) => {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleShare}
-                className="p-2 rounded-xl glass-panel text-zinc-300 hover:text-white hover:border-[#2CFF05]/40 transition-colors"
+                className="p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer"
                 title="Copy Link"
               >
-                {copied ? <Check className="w-4 h-4 text-[#2CFF05]" /> : <Share2 className="w-4 h-4" />}
+                {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Share2 className="w-4 h-4" />}
               </button>
               <button
                 onClick={onClose}
-                className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-2 rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -104,18 +104,18 @@ export const MediaModal: React.FC<MediaModalProps> = ({ card, onClose }) => {
                     className="absolute inset-0 w-full h-full object-cover opacity-30 filter blur-sm"
                   />
                 )}
-                <div className="relative z-10 p-6 rounded-2xl glass-panel max-w-md border-white/20">
-                  <div className="w-14 h-14 rounded-2xl bg-[#BF00FF]/30 border border-[#BF00FF] flex items-center justify-center mx-auto mb-4 text-[#BF00FF] glow-purple-sm">
+                <div className="relative z-10 p-6 rounded-2xl glass-card-sharp max-w-md border border-neutral-300 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/80">
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 flex items-center justify-center mx-auto mb-4 text-neutral-900 dark:text-white shadow-xs">
                     {card.mediaType === 'reel' ? <Film className="w-7 h-7" /> : <Headphones className="w-7 h-7" />}
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-1">{card.mediaTitle}</h4>
-                  <p className="text-xs text-zinc-400 mb-4">{card.mediaArtist || 'Nurture Media Stream'}</p>
+                  <h4 className="text-lg font-bold text-neutral-900 dark:text-white mb-1">{card.mediaTitle}</h4>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">{card.mediaArtist || 'Nurture Media Stream'}</p>
                   {card.mediaUrl && (
                     <a
                       href={card.mediaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#BF00FF] text-white text-xs font-bold hover:bg-[#cf26ff] transition-all glow-purple-sm"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 text-xs font-bold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all shadow-xs"
                     >
                       Open in External App <ExternalLink className="w-3.5 h-3.5" />
                     </a>
@@ -126,28 +126,28 @@ export const MediaModal: React.FC<MediaModalProps> = ({ card, onClose }) => {
           </div>
 
           {/* Content & Metadata footer */}
-          <div className="p-5 bg-zinc-950/80 border-t border-white/10 space-y-3">
+          <div className="p-5 bg-white dark:bg-neutral-950/80 border-t border-neutral-200 dark:border-neutral-800 space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <img
                   src={card.author.avatar}
                   alt={card.author.name}
-                  className="w-7 h-7 rounded-full object-cover border border-white/20"
+                  className="w-7 h-7 rounded-full object-cover border border-neutral-300 dark:border-neutral-700"
                 />
-                <span className="text-xs font-medium text-zinc-300">
-                  Shared by <span className="text-white font-semibold">{card.author.name}</span> ({card.author.role})
+                <span className="text-xs font-medium text-neutral-600 dark:text-neutral-300">
+                  Shared by <span className="text-neutral-900 dark:text-white font-semibold">{card.author.name}</span> ({card.author.role})
                 </span>
               </div>
-              <span className="text-xs text-zinc-500">{card.createdAt}</span>
+              <span className="text-xs text-neutral-400 dark:text-neutral-500">{card.createdAt}</span>
             </div>
 
-            <p className="text-sm text-zinc-300 leading-relaxed">{card.content}</p>
+            <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">{card.content}</p>
 
             <div className="flex flex-wrap gap-1.5 pt-1">
               {card.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[#BF00FF]"
+                  className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300"
                 >
                   {tag}
                 </span>
@@ -159,4 +159,3 @@ export const MediaModal: React.FC<MediaModalProps> = ({ card, onClose }) => {
     </AnimatePresence>
   )
 }
-
