@@ -88,7 +88,7 @@ function NurtureApp() {
   const [workspaceConfig, setWorkspaceConfig] = useState<WorkspaceConfig>({
     churchName: 'Grace City Community Church',
     slug: 'gracecity',
-    themeColor: '#ea580c',
+    themeColor: '#0a0a0a',
     defaultMeetingUrl: 'https://meet.google.com/nurture-ushers-sync',
     sprintCadenceDays: 7,
     autoArchiveToVault: true,
@@ -479,9 +479,9 @@ function NurtureApp() {
               </kbd>
             </div>
 
-            {/* Streak Pill (Amber flame = state indicator) */}
-            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200 text-xs font-bold font-mono shadow-2xs hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
-              <Flame className="w-3.5 h-3.5 fill-current text-amber-500" />
+            {/* Streak Pill (Monochrome state indicator) */}
+            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200 text-xs font-bold font-mono shadow-2xs hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-700 transition-all cursor-pointer">
+              <Flame className="w-3.5 h-3.5 fill-current text-neutral-900 dark:text-neutral-100" />
               <span>5d Streak</span>
             </div>
 
@@ -494,20 +494,20 @@ function NurtureApp() {
               aria-label="Toggle light or dark theme"
             >
               {resolvedTheme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-400 animate-in spin-in-180 duration-200" />
+                <Sun className="w-4 h-4 text-neutral-100 animate-in spin-in-180 duration-200" />
               ) : (
-                <Moon className="w-4 h-4 text-neutral-700 animate-in spin-in-180 duration-200" />
+                <Moon className="w-4 h-4 text-neutral-900 animate-in spin-in-180 duration-200" />
               )}
             </button>
 
-            {/* Notifications Bell (Amber dot = pending notice state) */}
+            {/* Notifications Bell (Emerald dot = active notice state) */}
             <button 
               type="button"
               className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors relative cursor-pointer"
               title="Notifications"
             >
               <Bell className="w-4 h-4" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500 ring-2 ring-white dark:ring-neutral-950" />
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-neutral-950" />
             </button>
 
             {/* Profile Avatar (Click to open Settings) */}
@@ -532,22 +532,22 @@ function NurtureApp() {
         </div>
       </header>
 
-      {/* ── 2. FLOATING ANNOUNCEMENT BANNER (Amber warning state) ── */}
+      {/* ── 2. FLOATING ANNOUNCEMENT BANNER (Clean Monochrome State) ── */}
       {announcement.isActive && !isBannerDismissed && (
         <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 pt-16">
-          <div className="py-2.5 px-4 rounded-xl text-xs font-medium flex items-center justify-between border glass-card-sharp bg-gradient-to-r from-amber-50/90 via-amber-50/70 to-amber-50/90 dark:from-amber-950/40 dark:via-amber-950/25 dark:to-amber-950/40 border-amber-300 dark:border-amber-800/60 text-neutral-900 dark:text-neutral-100 shadow-2xs">
+          <div className="py-2.5 px-4 rounded-xl text-xs font-medium flex items-center justify-between border glass-card-sharp bg-neutral-100/90 dark:bg-neutral-900/90 border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 shadow-2xs">
             <div className="flex items-center gap-2.5 min-w-0 pr-4">
-              <span className="p-1 rounded-lg bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 shrink-0 border border-amber-200 dark:border-amber-800">
+              <span className="p-1 rounded-lg bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 shrink-0 border border-neutral-300 dark:border-neutral-700">
                 <Megaphone className="w-3.5 h-3.5" />
               </span>
               <span className="truncate text-xs">
-                <strong className="text-amber-950 dark:text-amber-200 font-semibold mr-1.5">Announcement:</strong>
-                <span className="text-neutral-800 dark:text-neutral-200">{announcement.message}</span>
+                <strong className="text-neutral-950 dark:text-white font-bold mr-1.5">Announcement:</strong>
+                <span className="text-neutral-700 dark:text-neutral-300">{announcement.message}</span>
               </span>
             </div>
             <button
               onClick={() => setIsBannerDismissed(true)}
-              className="p-1 rounded-lg text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 hover:bg-amber-100/60 dark:hover:bg-amber-900/40 transition-colors shrink-0 cursor-pointer"
+              className="p-1 rounded-lg text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors shrink-0 cursor-pointer"
               title="Dismiss announcement"
             >
               <X className="w-3.5 h-3.5" />

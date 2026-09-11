@@ -322,7 +322,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === 'scripture'
                     ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
-                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800'
                 }`}
               >
                 <BookOpen className={`w-3.5 h-3.5 ${activeTab === 'scripture' ? 'text-white dark:text-neutral-950' : 'text-neutral-600 dark:text-neutral-400'}`} />
@@ -335,7 +335,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === 'reflection'
                     ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
-                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800'
                 }`}
               >
                 <PenTool className={`w-3.5 h-3.5 ${activeTab === 'reflection' ? 'text-white dark:text-neutral-950' : 'text-neutral-600 dark:text-neutral-400'}`} />
@@ -348,7 +348,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === 'media'
                     ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
-                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800'
                 }`}
               >
                 <Film className={`w-3.5 h-3.5 ${activeTab === 'media' ? 'text-white dark:text-neutral-950' : 'text-neutral-600 dark:text-neutral-400'}`} />
@@ -361,7 +361,7 @@ export const ReflectionComposer: React.FC<ReflectionComposerProps> = ({
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === 'voice'
                     ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
-                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800'
                 }`}
               >
                 <Headphones className={`w-3.5 h-3.5 ${activeTab === 'voice' ? 'text-white dark:text-neutral-950' : 'text-neutral-600 dark:text-neutral-400'}`} />

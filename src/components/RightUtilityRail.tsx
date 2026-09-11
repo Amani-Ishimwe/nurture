@@ -178,7 +178,7 @@ export const RightUtilityRail: React.FC<RightUtilityRailProps> = ({
           {topContributors.slice(0, 4).map((author, index) => (
             <div
               key={author.id}
-              className="flex items-center gap-2.5 p-2 rounded-lg bg-white/60 dark:bg-neutral-900/60 backdrop-blur-sm border border-neutral-300 dark:border-neutral-800 hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-colors"
+              className="flex items-center gap-2.5 p-2 rounded-lg bg-white/60 dark:bg-neutral-900/60 backdrop-blur-sm border border-neutral-300 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-700 hover:bg-white dark:hover:bg-neutral-850 transition-all cursor-pointer"
             >
               <span className="w-4 text-center font-mono text-[10px] font-bold text-neutral-400 dark:text-neutral-500">
                 #{index + 1}
@@ -193,7 +193,7 @@ export const RightUtilityRail: React.FC<RightUtilityRailProps> = ({
                 <p className="text-[10px] text-neutral-400 dark:text-neutral-500 truncate">{author.role}</p>
               </div>
               <div className="flex items-center gap-0.5 text-[11px] font-bold font-mono text-neutral-800 dark:text-neutral-200 shrink-0">
-                <Flame className="w-3 h-3 fill-current text-amber-500" />
+                <Flame className="w-3 h-3 fill-current text-neutral-900 dark:text-neutral-100" />
                 <span>{author.streakDays || 4}d</span>
               </div>
             </div>

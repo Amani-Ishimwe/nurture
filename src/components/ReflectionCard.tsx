@@ -401,7 +401,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
 
         {/* Interactive Reaction & Comment Bar */}
         <div className="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between gap-2">
-          {/* Reaction Pills: Amen (Emerald), Inspiring (Amber), Heart (Rose) */}
+          {/* Reaction Pills: Amen (Emerald), Inspiring (Monochrome), Heart (Rose) */}
           <div className="flex items-center gap-1.5">
             {/* Amen Reaction */}
             <button
@@ -409,7 +409,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
               className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all cursor-pointer ${
                 card.userReactions.amen
                   ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-700/70 text-emerald-800 dark:text-emerald-300 font-bold shadow-xs'
-                  : 'bg-white dark:bg-neutral-800/80 border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white'
+                  : 'bg-white dark:bg-neutral-850 border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-600 hover:text-neutral-950 dark:hover:text-white'
               }`}
               title="Amen - In agreement"
             >
@@ -417,17 +417,17 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
               <span>{card.reactions.amen}</span>
             </button>
 
-            {/* Inspiring Reaction */}
+            {/* Inspiring Reaction (Clean Monochrome state) */}
             <button
               onClick={() => onReact(card.id, 'inspiring')}
               className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all cursor-pointer ${
                 card.userReactions.inspiring
-                  ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-700/70 text-amber-800 dark:text-amber-300 font-bold shadow-xs'
-                  : 'bg-white dark:bg-neutral-800/80 border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white'
+                  ? 'bg-neutral-900 dark:bg-white border-neutral-900 dark:border-white text-white dark:text-neutral-950 font-bold shadow-xs'
+                  : 'bg-white dark:bg-neutral-850 border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-600 hover:text-neutral-950 dark:hover:text-white'
               }`}
               title="Inspiring - Kingdom Insight"
             >
-              <Lightbulb className={`w-3.5 h-3.5 ${card.userReactions.inspiring ? 'text-amber-500' : 'text-neutral-500 dark:text-neutral-400'}`} />
+              <Lightbulb className={`w-3.5 h-3.5 ${card.userReactions.inspiring ? 'text-white dark:text-neutral-950 fill-current' : 'text-neutral-500 dark:text-neutral-400'}`} />
               <span>{card.reactions.inspiring}</span>
             </button>
 
@@ -437,7 +437,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
               className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 border transition-all cursor-pointer ${
                 card.userReactions.heart
                   ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-300 dark:border-rose-700/70 text-rose-800 dark:text-rose-300 font-bold shadow-xs'
-                  : 'bg-white dark:bg-neutral-800/80 border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white'
+                  : 'bg-white dark:bg-neutral-850 border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-600 hover:text-neutral-950 dark:hover:text-white'
               }`}
               title="Heart - Encouraged"
             >
@@ -451,7 +451,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
             <button
               onClick={() => setIsCommentsOpen(!isCommentsOpen)}
               className={`px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors cursor-pointer ${
-                isCommentsOpen ? 'bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white font-semibold' : 'text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                isCommentsOpen ? 'bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white font-semibold' : 'text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white'
               }`}
             >
               <MessageSquare className="w-3.5 h-3.5" />
@@ -466,7 +466,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
             <button
               onClick={() => setIsBookmarked(!isBookmarked)}
               className={`p-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
-                isBookmarked ? 'text-amber-500' : 'text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-200'
+                isBookmarked ? 'text-neutral-900 dark:text-white' : 'text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
               }`}
               title="Bookmark post"
             >
@@ -475,7 +475,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
 
             <button
               onClick={handleShare}
-              className="p-1.5 rounded-lg text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
               title="Copy share link"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}

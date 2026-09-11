@@ -53,7 +53,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         <div className="relative">
           <button
             onClick={() => setIsCommunityDropdownOpen(!isCommunityDropdownOpen)}
-            className="w-full p-2 rounded-lg bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md hover:bg-white/95 dark:hover:bg-neutral-900/95 border border-neutral-300 dark:border-neutral-800 text-left flex items-center justify-between transition-colors group cursor-pointer"
+            className="w-full p-2 rounded-lg bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md hover:bg-white dark:hover:bg-neutral-850 border border-neutral-300 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-700 text-left flex items-center justify-between transition-colors group cursor-pointer"
           >
             <div className="flex items-center gap-2.5 min-w-0 pr-1">
               <div className="w-8 h-8 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center font-bold text-xs shrink-0">
@@ -156,7 +156,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         <div className="p-3 rounded-lg bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md border border-neutral-300 dark:border-neutral-800 space-y-2 shadow-2xs">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 flex items-center gap-1">
-              <Flame className="w-3 h-3 fill-current text-amber-500" />
+              <Flame className="w-3 h-3 fill-current text-neutral-900 dark:text-neutral-100" />
               Week 12 Progress
             </span>
             <span className="text-[10px] font-mono font-bold text-neutral-600 dark:text-neutral-400">Day 4/7</span>

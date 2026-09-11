@@ -154,8 +154,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-orange-50 dark:bg-orange-950/40 text-orange-800 dark:text-orange-300 border border-orange-200 dark:border-orange-800/60 flex items-center gap-1">
-                <Crown className="w-3 h-3 text-orange-600 dark:text-orange-400" />
+              <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 flex items-center gap-1.5 shadow-2xs">
+                <Crown className="w-3 h-3 text-neutral-900 dark:text-neutral-100 fill-current" />
                 {isAdminMode ? 'Workspace Owner & Admin' : 'Member View (Owner Account)'}
               </span>
               <span className="text-xs text-neutral-400 dark:text-neutral-500 font-mono">Organization Root</span>
@@ -170,9 +170,9 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             <button
               type="button"
               onClick={onToggleAdminMode}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold border flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold border flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 shadow-2xs ${
                 isAdminMode
-                  ? 'bg-orange-50 dark:bg-orange-950/40 text-orange-900 dark:text-orange-200 border-orange-300 dark:border-orange-800 hover:bg-orange-100 dark:hover:bg-orange-900/60'
+                  ? 'bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white border-neutral-300 dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700'
                   : 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 border-neutral-900 dark:border-white hover:bg-neutral-800 dark:hover:bg-neutral-100'
               }`}
             >
@@ -191,7 +191,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           className={`flex-1 min-w-[120px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'profile'
               ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
-              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
           }`}
         >
           <User className={`w-3.5 h-3.5 ${activeTab === 'profile' ? 'text-white dark:text-neutral-950' : 'text-neutral-500 dark:text-neutral-400'}`} />
@@ -204,7 +204,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           className={`flex-1 min-w-[120px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'appearance'
               ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
-              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
           }`}
         >
           <Palette className={`w-3.5 h-3.5 ${activeTab === 'appearance' ? 'text-white dark:text-neutral-950' : 'text-neutral-500 dark:text-neutral-400'}`} />
@@ -217,7 +217,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           className={`flex-1 min-w-[120px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'workspace'
               ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
-              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
           }`}
         >
           <Building2 className={`w-3.5 h-3.5 ${activeTab === 'workspace' ? 'text-white dark:text-neutral-950' : 'text-neutral-500 dark:text-neutral-400'}`} />
@@ -230,7 +230,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           className={`flex-1 min-w-[120px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'notifications'
               ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
-              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
           }`}
         >
           <Bell className={`w-3.5 h-3.5 ${activeTab === 'notifications' ? 'text-white dark:text-neutral-950' : 'text-neutral-500 dark:text-neutral-400'}`} />
@@ -250,22 +250,22 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             </div>
 
             {/* Account Role & Workspace Authority Card */}
-            <div className="p-3.5 rounded-lg bg-orange-50/80 dark:bg-orange-950/30 border border-orange-300 dark:border-orange-800/60 flex items-center justify-between gap-3 shadow-2xs">
+            <div className="p-3.5 rounded-lg bg-neutral-100/90 dark:bg-neutral-900/90 border border-neutral-300 dark:border-neutral-700 flex items-center justify-between gap-3 shadow-2xs">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/60 text-orange-800 dark:text-orange-300 border border-orange-200 dark:border-orange-800 flex items-center justify-center shrink-0">
-                  <Crown className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                <div className="w-10 h-10 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-700 flex items-center justify-center shrink-0 shadow-2xs">
+                  <Crown className="w-5 h-5 text-neutral-900 dark:text-neutral-100" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h4 className="text-xs font-bold text-orange-950 dark:text-orange-200">Workspace Owner</h4>
-                    <span className="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-orange-600 text-white shadow-2xs">
+                    <h4 className="text-xs font-bold text-neutral-900 dark:text-neutral-100">Workspace Owner</h4>
+                    <span className="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-2xs">
                       Admin
                     </span>
-                    <span className="text-[10px] font-mono text-orange-800 dark:text-orange-300 font-semibold">
+                    <span className="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 font-semibold">
                       Primary Root Account
                     </span>
                   </div>
-                  <p className="text-[11px] text-orange-900/80 dark:text-orange-300/80 mt-0.5">
+                  <p className="text-[11px] text-neutral-600 dark:text-neutral-400 mt-0.5">
                     As the Workspace Owner, you have full administrative authority across sprint lifecycles, study themes, moderation, and workspace branding.
                   </p>
                 </div>
@@ -472,8 +472,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               }`}
             >
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-lg bg-neutral-100 text-neutral-900 flex items-center justify-center border border-neutral-300">
-                  <Sun className="w-5 h-5 text-amber-500" />
+                <div className="w-9 h-9 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
+                  <Sun className="w-5 h-5 text-neutral-900 dark:text-neutral-100" />
                 </div>
                 {theme === 'light' && (
                   <span className="w-2 h-2 rounded-full bg-neutral-900 dark:bg-white" />
@@ -543,7 +543,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           {/* Theme Information Banner */}
           <div className="p-4 rounded-lg bg-neutral-100/70 dark:bg-neutral-900/60 border border-neutral-300 dark:border-neutral-800 space-y-2">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-500" />
+              <Sparkles className="w-4 h-4 text-neutral-900 dark:text-neutral-100" />
               <h4 className="text-xs font-bold text-neutral-900 dark:text-white">Zero-Flicker Architecture</h4>
             </div>
             <p className="text-[11px] text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -565,26 +565,26 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             </div>
 
             {/* Workspace Owner Card */}
-            <div className="p-4 rounded-lg bg-orange-50/80 dark:bg-orange-950/30 border border-orange-300 dark:border-orange-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+            <div className="p-4 rounded-lg bg-neutral-100/90 dark:bg-neutral-900/90 border border-neutral-300 dark:border-neutral-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="relative shrink-0">
                   <img
                     src={avatar}
                     alt={name}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-orange-300 dark:border-orange-700 ring-2 ring-orange-200 dark:ring-orange-800 shadow-xs"
+                    className="w-10 h-10 rounded-full object-cover border-2 border-neutral-300 dark:border-neutral-700 ring-2 ring-neutral-200 dark:ring-neutral-800 shadow-xs"
                   />
-                  <span className="absolute -top-1 -right-1 p-0.5 rounded-full bg-orange-600 text-white shadow-xs">
+                  <span className="absolute -top-1 -right-1 p-0.5 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs">
                     <Crown className="w-2.5 h-2.5" />
                   </span>
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <h4 className="text-xs font-bold text-orange-950 dark:text-orange-200 truncate">{name}</h4>
-                    <span className="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-orange-200 dark:bg-orange-900 text-orange-900 dark:text-orange-200 border border-orange-300 dark:border-orange-700">
+                    <h4 className="text-xs font-bold text-neutral-900 dark:text-neutral-100 truncate">{name}</h4>
+                    <span className="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-700">
                       Workspace Owner (Admin)
                     </span>
                   </div>
-                  <p className="text-[11px] text-orange-800/80 dark:text-orange-300/80 truncate mt-0.5">
+                  <p className="text-[11px] text-neutral-600 dark:text-neutral-400 truncate mt-0.5">
                     {email} · Primary Organization Administrator
                   </p>
                 </div>
@@ -603,8 +603,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             </div>
 
             {!isAdminMode && (
-              <div className="p-3 rounded-lg bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800/60 flex items-center gap-2.5 text-xs text-amber-900 dark:text-amber-200 shadow-2xs">
-                <Lock className="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0" />
+              <div className="p-3 rounded-lg bg-neutral-100/90 dark:bg-neutral-900/90 border border-neutral-300 dark:border-neutral-700 flex items-center gap-2.5 text-xs text-neutral-800 dark:text-neutral-200 shadow-2xs">
+                <Lock className="w-4 h-4 text-neutral-600 dark:text-neutral-400 shrink-0" />
                 <span>
                   <strong>Workspace Settings are in view-only mode.</strong> Only the Workspace Owner (Admin) can update organization details and automation policies.
                 </span>

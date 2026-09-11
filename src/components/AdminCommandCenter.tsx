@@ -160,7 +160,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 flex items-center gap-1.5 shadow-2xs">
-              <Crown className="w-3 h-3 text-amber-500 fill-amber-500" />
+              <Crown className="w-3 h-3 text-neutral-900 dark:text-neutral-100 fill-current" />
               Workspace Owner & Admin Access
             </span>
             <span className="text-xs text-neutral-400 dark:text-neutral-500 font-mono">Restricted Command Panel</span>
@@ -351,8 +351,8 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
                   onClick={() => setSprintStatus('draft')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                     sprintStatus === 'draft'
-                      ? 'bg-amber-100 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60 font-bold'
-                      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
+                      ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 border border-neutral-900 dark:border-white font-bold shadow-2xs'
+                      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/70 dark:hover:bg-neutral-700'
                   }`}
                 >
                   Draft Mode
@@ -480,7 +480,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
           <form onSubmit={handleSaveAnnouncement} className="p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-3.5">
             <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3">
               <div className="flex items-center gap-2">
-                <Megaphone className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                <Megaphone className="w-4 h-4 text-neutral-900 dark:text-neutral-100" />
                 <h3 className="text-sm font-bold text-neutral-900 dark:text-white">Broadcast Urgent Banner Announcement</h3>
               </div>
               <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500">Top of App Banner</span>

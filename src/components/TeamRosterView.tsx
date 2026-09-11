@@ -72,7 +72,7 @@ export const TeamRosterView: React.FC = () => {
                   <h4 className="text-sm font-bold text-neutral-900 dark:text-white truncate">{member.name}</h4>
                   {member.isWorkspaceOwner ? (
                     <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-2xs flex items-center gap-1">
-                      <Crown className="w-2.5 h-2.5 text-amber-400" /> Owner & Admin
+                      <Crown className="w-2.5 h-2.5 text-white dark:text-neutral-950" /> Owner & Admin
                     </span>
                   ) : member.isCurrentUser ? (
                     <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700">
@@ -87,7 +87,7 @@ export const TeamRosterView: React.FC = () => {
 
             <div className="flex flex-col items-end gap-1 shrink-0">
               <div className="flex items-center gap-1 text-xs font-bold font-mono text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded-lg border border-neutral-200 dark:border-neutral-700">
-                <Flame className="w-3.5 h-3.5 fill-current text-amber-500" />
+                <Flame className="w-3.5 h-3.5 fill-current text-neutral-900 dark:text-neutral-100" />
                 <span>{member.streakDays || 4}d streak</span>
               </div>
               <span className="text-[10px] text-neutral-400 dark:text-neutral-500 font-mono">
