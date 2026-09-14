@@ -109,7 +109,7 @@ export const MediaModal: React.FC<MediaModalProps> = ({ card, onClose }) => {
                     {card.mediaType === 'reel' ? <Film className="w-7 h-7" /> : <Headphones className="w-7 h-7" />}
                   </div>
                   <h4 className="text-lg font-bold text-neutral-900 dark:text-white mb-1">{card.mediaTitle}</h4>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">{card.mediaArtist || 'Nurture Media Stream'}</p>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">{card.mediaArtist || 'Sage Media Stream'}</p>
                   {card.mediaUrl && (
                     <a
                       href={card.mediaUrl}

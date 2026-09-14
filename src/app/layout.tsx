@@ -3,11 +3,11 @@ import './globals.css'
 import { ThemeProvider } from '@/context/ThemeContext'
 
 export const metadata: Metadata = {
-  title: 'Nurture | Church Community Study Platform',
+  title: 'Sage | Church Community Study Platform',
   description:
     'A collaborative 7-day multimedia study hub and management platform for church teams and organizations.',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/sage.svg',
   },
 }
 
@@ -38,7 +38,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `(function() {
               try {
-                var theme = localStorage.getItem('nurture-theme');
+                var theme = localStorage.getItem('sage-theme') || localStorage.getItem('nurture-theme');
                 var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (theme === 'dark' || (!theme && supportDarkMode) || (theme === 'system' && supportDarkMode)) {
                   document.documentElement.classList.add('dark');

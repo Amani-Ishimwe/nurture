@@ -240,7 +240,10 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           <span>•</span>
           <span>Resources</span>
           <span>•</span>
-          <span className="font-semibold text-neutral-600 dark:text-neutral-400">Nurture</span>
+          <span className="font-semibold text-neutral-600 dark:text-neutral-400 flex items-center gap-1.5">
+            <img src="/sage.svg" alt="Sage" className="w-3.5 h-3.5 rounded-xs object-cover" />
+            Sage
+          </span>
         </div>
       </div>
     </aside>

@@ -45,7 +45,6 @@ import {
   CheckCircle,
   Bell,
   Flame,
-  Sprout,
   Sparkles,
   ChevronDown,
   History,
@@ -59,9 +58,9 @@ import {
 } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 
-export default NurtureApp
+export default SageApp
 
-function NurtureApp() {
+function SageApp() {
   const { theme, resolvedTheme, toggleTheme } = useTheme()
   // Navigation & Community State
   const [currentTab, setCurrentTab] = useState<NavTab>('feed')
@@ -88,7 +87,7 @@ function NurtureApp() {
     churchName: 'Grace City Community Church',
     slug: 'gracecity',
     themeColor: '#0a0a0a',
-    defaultMeetingUrl: 'https://meet.google.com/nurture-ushers-sync',
+    defaultMeetingUrl: 'https://meet.google.com/sage-ushers-sync',
     sprintCadenceDays: 7,
     autoArchiveToVault: true,
     allowAnonymousReflections: true,
@@ -299,15 +298,19 @@ function NurtureApp() {
       <header className="fixed top-0 left-0 right-0 z-40 h-14 bg-white/80 dark:bg-[#0f0f12]/85 backdrop-blur-xl border-b border-neutral-300 dark:border-neutral-800 shadow-2xs transition-colors">
         <div className="max-w-[1280px] w-full mx-auto h-full px-4 sm:px-6 flex items-center justify-between gap-4">
           
-          {/* Left: Brand Identity with Sprout Icon + Interactive Week Selector */}
+          {/* Left: Brand Identity with Sage Logo + Interactive Week Selector */}
           <div className="flex items-center gap-2.5 shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 flex items-center justify-center shadow-xs border border-neutral-800 dark:border-neutral-200 transition-colors">
-              <Sprout className="w-4.5 h-4.5 stroke-[2.2]" />
+            <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-xs border border-neutral-200 dark:border-neutral-800 bg-[#F9F8F6] shrink-0">
+              <img
+                src="/sage.svg"
+                alt="Sage Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             <div className="flex items-center gap-2">
               <h1 className="text-base font-bold tracking-tight text-neutral-950 dark:text-white leading-none">
-                Nurture
+                Sage
               </h1>
 
               {/* Interactive Week History Dropdown Trigger */}

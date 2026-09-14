@@ -14,7 +14,8 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'nurture-theme';
+const STORAGE_KEY = 'sage-theme';
+const LEGACY_STORAGE_KEY = 'nurture-theme';
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('system');
@@ -24,7 +25,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Initialize theme from localStorage or system on mount
   useEffect(() => {
     try {
-      const savedTheme = localStorage.getItem(STORAGE_KEY) as Theme | null;
+      const savedTheme = (localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY)) as Theme | null;
       if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'system')) {
         setThemeState(savedTheme);
       }

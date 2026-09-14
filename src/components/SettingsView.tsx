@@ -136,7 +136,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `nurture-${slug}-export.json`
+    a.download = `sage-${slug}-export.json`
     a.click()
     URL.revokeObjectURL(url)
     onShowToast('Workspace data downloaded')
@@ -632,7 +632,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 </label>
                 <div className="flex items-center">
                   <span className="px-3 py-2 rounded-l-lg bg-neutral-100 dark:bg-neutral-800 border border-r-0 border-neutral-300 dark:border-neutral-700 text-xs text-neutral-500 dark:text-neutral-400 font-mono">
-                    nurture.app/
+                    sage.app/
                   </span>
                   <input
                     type="text"

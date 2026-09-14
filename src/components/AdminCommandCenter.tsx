@@ -130,7 +130,7 @@ export const AdminCommandCenter: React.FC<AdminCommandCenterProps> = ({
   const handleExportSummary = () => {
     const pinnedPosts = cards.filter((c) => c.isPinned)
     const summaryMarkdown = `
-# 📌 Nurture Weekly Study Recap — ${currentSprint.themeTitle}
+# 📌 Sage Weekly Study Recap — ${currentSprint.themeTitle}
 **Ministry:** Usher & Hospitality Ministry
 **Active Sprint:** Day ${currentSprint.currentDay} of 7 (${currentSprint.startDate} to ${currentSprint.endDate})
 **Anchor Verse:** "${currentSprint.anchorScripture}" — *${currentSprint.anchorReference}*
@@ -144,7 +144,7 @@ export const AdminCommandCenter: React.FC<AdminCommandCenterProps> = ({
 ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.content.slice(0, 120)}..."`).join('\n')}
 
 ---
-*Exported directly from Nurture Admin Command Center for Slack/Email broadcast.*
+*Exported directly from Sage Admin Command Center for Slack/Email broadcast.*
 `.trim()
 
     navigator.clipboard.writeText(summaryMarkdown)

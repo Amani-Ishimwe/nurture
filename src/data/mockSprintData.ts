@@ -155,7 +155,7 @@ export const currentSprint: Sprint = {
   totalDays: 7,
   status: 'published',
   liveSyncTime: '08:00 PM EST Tonight',
-  liveSyncMeetingUrl: 'https://meet.google.com/nurture-sync',
+  liveSyncMeetingUrl: 'https://meet.google.com/sage-sync',
   liveSyncAgenda: [
     '00-10m: Pastoral Welcome & Heart Alignment (Marcus Vance)',
     '10-25m: Breakout: Preparing the Sanctuary as Holy Ground',
