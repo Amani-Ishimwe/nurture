@@ -43,7 +43,7 @@ export const RightUtilityRail: React.FC<RightUtilityRailProps> = ({
   }
 
   return (
-    <aside className="w-80 shrink-0 sticky top-18 h-[calc(100vh-5.5rem)] flex flex-col gap-4 px-4 py-4 glass-panel-sharp border border-neutral-300 dark:border-neutral-800 rounded-xl overflow-y-auto select-none shadow-2xs transition-colors">
+    <aside className="hidden xl:flex flex-col gap-4 w-72 2xl:w-80 shrink-0 sticky top-18 h-[calc(100vh-5.5rem)] px-4 py-4 glass-panel-sharp border border-neutral-300 dark:border-neutral-800 rounded-xl overflow-y-auto select-none shadow-2xs transition-colors">
 
       {/* SECTION 1: Featured Sprint of the Day */}
       <div>

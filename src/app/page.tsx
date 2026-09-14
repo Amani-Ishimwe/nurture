@@ -34,6 +34,9 @@ import { TeamRosterView } from '../components/TeamRosterView'
 import { SettingsView } from '../components/SettingsView'
 import { MediaModal } from '../components/MediaModal'
 import {
+  Compass,
+  Users,
+  Sliders,
   Megaphone,
   X,
   Layers,
@@ -325,7 +328,7 @@ function SageApp() {
                   title="Click to browse previous weeks history"
                 >
                   <History className={`w-3 h-3 ${selectedWeek === 12 ? 'text-neutral-500 dark:text-neutral-400' : 'text-neutral-300 dark:text-neutral-600'}`} />
-                  <span>{selectedWeek === 'all' ? 'All Weeks' : `Week ${selectedWeek}`}</span>
+                  <span className="hidden sm:inline">{selectedWeek === 'all' ? 'All Weeks' : `Week ${selectedWeek}`}</span><span className="sm:hidden font-mono">{selectedWeek === 'all' ? 'All' : `W${selectedWeek}`}</span>
                   {selectedWeek !== 12 && selectedWeek !== 'all' && (
                     <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-1 bg-neutral-800 dark:bg-neutral-200 text-neutral-200 dark:text-neutral-800 rounded">
                       Archive
@@ -553,7 +556,7 @@ function SageApp() {
       )}
 
       {/* ── 3. STRUCTURED 3-COLUMN WORKSPACE CONTAINER ── */}
-      <div className={`flex items-start justify-center max-w-[1280px] mx-auto px-4 sm:px-6 w-full gap-5 ${
+      <div className={`flex items-start justify-center max-w-[1280px] mx-auto px-3 sm:px-6 w-full gap-4 lg:gap-5 ${
         announcement.isActive && !isBannerDismissed ? 'pt-3' : 'pt-16'
       }`}>
 
@@ -575,7 +578,7 @@ function SageApp() {
         />
 
         {/* CENTER FEED (Max-w-[660px], Main Feed Stream) */}
-        <main className="flex-1 max-w-[660px] min-w-0 py-4 space-y-4">
+        <main className="flex-1 w-full max-w-full lg:max-w-[660px] min-w-0 py-3 sm:py-4 space-y-4 pb-24 md:pb-8">
 
           {/* VIEW: SPRINT FEED */}
           {currentTab === 'feed' && (
@@ -784,6 +787,87 @@ function SageApp() {
           onOpenResource={handleOpenResource}
         />
       </div>
+
+            {/* ── 4. MOBILE BOTTOM NAVIGATION BAR (Screens < md) ── */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0f0f12]/95 backdrop-blur-xl border-t border-neutral-200 dark:border-neutral-800 px-3 py-1.5 flex items-center justify-around shadow-lg transition-colors">
+        <button
+          type="button"
+          onClick={() => setCurrentTab('feed')}
+          className={`flex flex-col items-center gap-0.5 py-1 px-3 rounded-lg text-[10px] font-semibold transition-all cursor-pointer ${
+            currentTab === 'feed'
+              ? 'text-neutral-950 dark:text-white font-bold'
+              : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+          }`}
+        >
+          <div className={`p-1 rounded-md transition-colors ${currentTab === 'feed' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs' : ''}`}>
+            <Compass className="w-4 h-4" />
+          </div>
+          <span>Sprint</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setCurrentTab('vault')}
+          className={`flex flex-col items-center gap-0.5 py-1 px-3 rounded-lg text-[10px] font-semibold transition-all cursor-pointer ${
+            currentTab === 'vault'
+              ? 'text-neutral-950 dark:text-white font-bold'
+              : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+          }`}
+        >
+          <div className={`p-1 rounded-md transition-colors ${currentTab === 'vault' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs' : ''}`}>
+            <Archive className="w-4 h-4" />
+          </div>
+          <span>Vault</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setCurrentTab('roster')}
+          className={`flex flex-col items-center gap-0.5 py-1 px-3 rounded-lg text-[10px] font-semibold transition-all cursor-pointer ${
+            currentTab === 'roster'
+              ? 'text-neutral-950 dark:text-white font-bold'
+              : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+          }`}
+        >
+          <div className={`p-1 rounded-md transition-colors ${currentTab === 'roster' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs' : ''}`}>
+            <Users className="w-4 h-4" />
+          </div>
+          <span>Team</span>
+        </button>
+
+        {isAdminMode && (
+          <button
+            type="button"
+            onClick={() => setCurrentTab('admin')}
+            className={`flex flex-col items-center gap-0.5 py-1 px-3 rounded-lg text-[10px] font-semibold transition-all cursor-pointer ${
+              currentTab === 'admin'
+                ? 'text-neutral-950 dark:text-white font-bold'
+                : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+            }`}
+          >
+            <div className={`p-1 rounded-md transition-colors relative ${currentTab === 'admin' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs' : ''}`}>
+              <Sliders className="w-4 h-4" />
+              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-500 ring-1 ring-white dark:ring-neutral-900" />
+            </div>
+            <span>Admin</span>
+          </button>
+        )}
+
+        <button
+          type="button"
+          onClick={() => setCurrentTab('settings')}
+          className={`flex flex-col items-center gap-0.5 py-1 px-3 rounded-lg text-[10px] font-semibold transition-all cursor-pointer ${
+            currentTab === 'settings'
+              ? 'text-neutral-950 dark:text-white font-bold'
+              : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+          }`}
+        >
+          <div className={`p-1 rounded-md transition-colors ${currentTab === 'settings' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs' : ''}`}>
+            <Settings className="w-4 h-4" />
+          </div>
+          <span>Settings</span>
+        </button>
+      </nav>
 
       {/* Media Modal */}
       <MediaModal card={activeMediaCard} onClose={() => setActiveMediaCard(null)} />

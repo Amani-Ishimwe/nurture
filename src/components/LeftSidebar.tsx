@@ -46,7 +46,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
   ]
 
   return (
-    <aside className="w-60 shrink-0 sticky top-18 h-[calc(100vh-5.5rem)] flex flex-col justify-between glass-panel-sharp border border-neutral-300 dark:border-neutral-800 rounded-xl py-4 px-3 select-none overflow-y-auto shadow-2xs transition-colors">
+    <aside className="hidden md:flex flex-col justify-between w-52 lg:w-60 shrink-0 sticky top-18 h-[calc(100vh-5.5rem)] glass-panel-sharp border border-neutral-300 dark:border-neutral-800 rounded-xl py-4 px-3 select-none overflow-y-auto shadow-2xs transition-colors">
       {/* Top nav section */}
       <div className="space-y-4">
         {/* Ministry Switcher Card */}

@@ -106,7 +106,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
       {/* Pinned by Chief Usher Header Banner */}
       {card.isPinned && (
         <div className="px-4 py-1.5 bg-neutral-900 dark:bg-neutral-800 text-white flex items-center justify-between text-xs font-semibold">
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1 sm:gap-1.5">
             <Pin className="w-3.5 h-3.5 fill-current text-white rotate-45" />
             <span>Pinned by Chief Usher</span>
           </div>
@@ -400,7 +400,7 @@ export const ReflectionCard: React.FC<ReflectionCardProps> = ({
         )}
 
         {/* Interactive Reaction & Comment Bar */}
-        <div className="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between gap-2">
+        <div className="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex flex-wrap items-center justify-between gap-2">
           {/* Reaction Pills: Amen (Emerald), Inspiring (Monochrome), Heart (Rose) */}
           <div className="flex items-center gap-1.5">
             {/* Amen Reaction */}

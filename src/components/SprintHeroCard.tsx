@@ -17,7 +17,7 @@ interface SprintHeroCardProps {
 
 export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayClick }) => {
   return (
-    <div className="w-full p-5 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-4 transition-colors">
+    <div className="w-full p-4 sm:p-6 rounded-xl glass-card-sharp border border-neutral-300 dark:border-neutral-800 shadow-2xs space-y-4 transition-colors">
       {/* Top Tag & Sprint Indicator */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
@@ -78,7 +78,7 @@ export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayCli
         </div>
 
         {/* Stepper Progress Bar */}
-        <div className="grid grid-cols-7 gap-1.5">
+        <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
           {sprint.dailyThemes.map((dayItem) => {
             const isCompleted = dayItem.day < sprint.currentDay || (sprint.status === 'archived')
             const isCurrent = dayItem.day === sprint.currentDay && sprint.status !== 'archived'
@@ -88,7 +88,7 @@ export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayCli
                 key={dayItem.day}
                 onClick={() => onDayClick && onDayClick(dayItem.day)}
                 title={`Day ${dayItem.day}: ${dayItem.title}`}
-                className={`p-2 rounded-lg text-center border transition-all cursor-pointer ${
+                className={`p-1 sm:p-2 rounded-md sm:rounded-lg text-center border transition-all cursor-pointer ${
                   isCurrent
                     ? 'bg-neutral-900 dark:bg-white border-neutral-900 dark:border-white shadow-2xs text-white dark:text-neutral-950 font-bold'
                     : isCompleted
@@ -96,8 +96,9 @@ export const SprintHeroCard: React.FC<SprintHeroCardProps> = ({ sprint, onDayCli
                       : 'bg-neutral-50/70 dark:bg-neutral-900/40 border-neutral-200 dark:border-neutral-800/60 text-neutral-400 dark:text-neutral-600 hover:border-neutral-300 dark:hover:border-neutral-700'
                 }`}
               >
-                <span className={`text-[10px] uppercase tracking-wider block font-medium ${isCurrent ? 'text-neutral-200 dark:text-neutral-800' : ''}`}>
-                  Day {dayItem.day}
+                <span className={`text-[9px] sm:text-[10px] uppercase tracking-tighter sm:tracking-wider block font-medium ${isCurrent ? 'text-neutral-200 dark:text-neutral-800' : ''}`}>
+                  <span className="sm:hidden">D{dayItem.day}</span>
+                  <span className="hidden sm:inline">Day {dayItem.day}</span>
                 </span>
                 <div className="flex justify-center mt-1">
                   {isCompleted ? (
