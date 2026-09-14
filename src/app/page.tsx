@@ -300,7 +300,7 @@ function SageApp() {
           
           {/* Left: Brand Identity with Sage Logo + Interactive Week Selector */}
           <div className="flex items-center gap-2.5 shrink-0">
-            <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-xs border border-neutral-200 dark:border-neutral-800 bg-[#F9F8F6] shrink-0">
+            <div className="w-8.5 h-8.5 rounded-lg overflow-hidden flex items-center justify-center shadow-2xs border border-neutral-200 dark:border-neutral-800 bg-[#F9F8F6] shrink-0 transition-transform">
               <img
                 src="/sage.svg"
                 alt="Sage Logo"
