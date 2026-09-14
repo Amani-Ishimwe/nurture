@@ -15,7 +15,8 @@ import {
   Clock,
   Sparkles,
   TrendingUp,
-  Share2
+  Share2,
+  X
 } from 'lucide-react'
 import { Sprint, PinnedResource } from '../types/sprint'
 import { mockAuthors, initialReflectionCards } from '../data/mockSprintData'
@@ -24,12 +25,18 @@ interface RightUtilityRailProps {
   sprint: Sprint
   pinnedResources: PinnedResource[]
   onOpenResource: (resource: PinnedResource) => void
+  isInline?: boolean
+  isDrawer?: boolean
+  onClose?: () => void
 }
 
 export const RightUtilityRail: React.FC<RightUtilityRailProps> = ({
   sprint,
   pinnedResources,
   onOpenResource,
+  isInline,
+  isDrawer,
+  onClose,
 }) => {
   const [upvotes, setUpvotes] = useState(24)
   const [hasUpvoted, setHasUpvoted] = useState(false)
@@ -42,8 +49,8 @@ export const RightUtilityRail: React.FC<RightUtilityRailProps> = ({
     setHasUpvoted(!hasUpvoted)
   }
 
-  return (
-    <aside className="hidden xl:flex flex-col gap-4 w-72 2xl:w-80 shrink-0 sticky top-18 h-[calc(100vh-5.5rem)] px-4 py-4 glass-panel-sharp border border-neutral-300 dark:border-neutral-800 rounded-xl overflow-y-auto select-none shadow-2xs transition-colors">
+  const contentSections = (
+    <div className="flex flex-col gap-4">
 
       {/* SECTION 1: Featured Sprint of the Day */}
       <div>
@@ -250,6 +257,48 @@ export const RightUtilityRail: React.FC<RightUtilityRailProps> = ({
           })}
         </div>
       </div>
+    </div>
+  )
+
+  if (isInline) {
+    return (
+      <div className="w-full flex flex-col gap-4 p-4 sm:p-5 glass-card-sharp border border-neutral-300 dark:border-neutral-800 rounded-xl select-none shadow-2xs transition-colors">
+        {contentSections}
+      </div>
+    )
+  }
+
+  if (isDrawer) {
+    return (
+      <div className="w-full flex flex-col gap-4 p-4 sm:p-5 select-none overflow-y-auto">
+        <div className="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
+          <div className="flex items-center gap-2">
+            <span className="p-1 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-950">
+              <Sparkles className="w-3.5 h-3.5" />
+            </span>
+            <h3 className="text-sm font-bold text-neutral-900 dark:text-white">
+              Study Hub & Resources
+            </h3>
+          </div>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              className="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+              title="Close panel"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
+        {contentSections}
+      </div>
+    )
+  }
+
+  return (
+    <aside className="hidden xl:flex flex-col gap-4 w-72 2xl:w-80 shrink-0 sticky top-18 h-[calc(100vh-5.5rem)] px-4 py-4 glass-panel-sharp border border-neutral-300 dark:border-neutral-800 rounded-xl overflow-y-auto select-none shadow-2xs transition-colors">
+      {contentSections}
     </aside>
   )
 }

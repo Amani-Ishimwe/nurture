@@ -69,6 +69,7 @@ function SageApp() {
   const [currentTab, setCurrentTab] = useState<NavTab>('feed')
   const [selectedMinistry, setSelectedMinistry] = useState<CommunityMinistry>(mockMinistries[0])
   const [isAdminMode, setIsAdminMode] = useState<boolean>(true)
+  const [isRightDrawerOpen, setIsRightDrawerOpen] = useState<boolean>(false)
 
   // User Profile & Workspace Settings State
   const [userProfile, setUserProfile] = useState<UserProfileSettings>({
@@ -299,7 +300,7 @@ function SageApp() {
 
       {/* ── 1. TOP NAVBAR (Bounded max-width, never touches screen edges) ── */}
       <header className="fixed top-0 left-0 right-0 z-40 h-14 bg-white/80 dark:bg-[#0f0f12]/85 backdrop-blur-xl border-b border-neutral-300 dark:border-neutral-800 shadow-2xs transition-colors">
-        <div className="max-w-[1280px] w-full mx-auto h-full px-4 sm:px-6 flex items-center justify-between gap-4">
+        <div className="max-w-7xl w-full mx-auto h-full px-4 sm:px-6 flex items-center justify-between gap-4">
           
           {/* Left: Brand Identity with Sage Logo + Interactive Week Selector */}
           <div className="flex items-center gap-2.5 shrink-0">
@@ -484,6 +485,21 @@ function SageApp() {
               <span>5d Streak</span>
             </div>
 
+            {/* Study Hub & Resources Button on Tablet & Mobile (< xl) */}
+            <button
+              type="button"
+              onClick={() => setIsRightDrawerOpen(true)}
+              className="xl:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/80 dark:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-300 dark:border-neutral-800 text-xs font-semibold text-neutral-800 dark:text-neutral-200 transition-all cursor-pointer shadow-2xs"
+              title="Open Study Hub & Resources"
+              aria-label="Open Study Hub and Resources"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-neutral-900 dark:text-neutral-100" />
+              <span className="hidden sm:inline">Study Hub</span>
+              <span className="text-[10px] font-mono px-1 py-0.2 rounded bg-neutral-200/80 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-bold">
+                {pinnedResources.length}
+              </span>
+            </button>
+
             {/* Dark/Light Theme Toggle */}
             <button
               type="button"
@@ -533,7 +549,7 @@ function SageApp() {
 
       {/* ── 2. FLOATING ANNOUNCEMENT BANNER (Clean Monochrome State) ── */}
       {announcement.isActive && !isBannerDismissed && (
-        <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 pt-16">
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 pt-16">
           <div className="py-2.5 px-4 rounded-xl text-xs font-medium flex items-center justify-between border glass-card-sharp bg-neutral-100/90 dark:bg-neutral-900/90 border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 shadow-2xs">
             <div className="flex items-center gap-2.5 min-w-0 pr-4">
               <span className="p-1 rounded-lg bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 shrink-0 border border-neutral-300 dark:border-neutral-700">
@@ -556,7 +572,7 @@ function SageApp() {
       )}
 
       {/* ── 3. STRUCTURED 3-COLUMN WORKSPACE CONTAINER ── */}
-      <div className={`flex items-start justify-center max-w-[1280px] mx-auto px-3 sm:px-6 w-full gap-4 lg:gap-5 ${
+      <div className={`flex items-start justify-center max-w-7xl mx-auto px-3 sm:px-6 w-full gap-4 lg:gap-5 ${
         announcement.isActive && !isBannerDismissed ? 'pt-3' : 'pt-16'
       }`}>
 
@@ -578,7 +594,7 @@ function SageApp() {
         />
 
         {/* CENTER FEED (Max-w-[660px], Main Feed Stream) */}
-        <main className="flex-1 w-full max-w-full lg:max-w-[660px] min-w-0 py-3 sm:py-4 space-y-4 pb-24 md:pb-8">
+        <main className="flex-1 w-full max-w-full lg:max-w-165 min-w-0 py-3 sm:py-4 space-y-4 pb-24 md:pb-8">
 
           {/* VIEW: SPRINT FEED */}
           {currentTab === 'feed' && (
@@ -725,6 +741,34 @@ function SageApp() {
                   </div>
                 )}
               </div>
+              {/* Inline Study Hub & Resources on Mobile/Tablet (< xl) */}
+              <div className="xl:hidden mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="p-1.5 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-950">
+                      <Sparkles className="w-3.5 h-3.5" />
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-bold text-neutral-900 dark:text-white">
+                        Study Hub & Community Pulse
+                      </h3>
+                      <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                        Featured sprint, discussions, pulse leaderboard & guides
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 hidden sm:inline">
+                    Week {activeSprint.sprintNumber}
+                  </span>
+                </div>
+
+                <RightUtilityRail
+                  sprint={activeSprint}
+                  pinnedResources={pinnedResources}
+                  onOpenResource={handleOpenResource}
+                  isInline={true}
+                />
+              </div>
             </>
           )}
 
@@ -822,6 +866,22 @@ function SageApp() {
 
         <button
           type="button"
+          onClick={() => setIsRightDrawerOpen(true)}
+          className={`flex flex-col items-center gap-0.5 py-1 px-2.5 rounded-lg text-[10px] font-semibold transition-all cursor-pointer ${
+            isRightDrawerOpen
+              ? 'text-neutral-950 dark:text-white font-bold'
+              : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+          }`}
+        >
+          <div className={`p-1 rounded-md transition-colors relative ${isRightDrawerOpen ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs' : ''}`}>
+            <Sparkles className="w-4 h-4" />
+            <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-500 ring-1 ring-white dark:ring-neutral-900" />
+          </div>
+          <span>Hub</span>
+        </button>
+
+        <button
+          type="button"
           onClick={() => setCurrentTab('roster')}
           className={`flex flex-col items-center gap-0.5 py-1 px-3 rounded-lg text-[10px] font-semibold transition-all cursor-pointer ${
             currentTab === 'roster'
@@ -868,6 +928,31 @@ function SageApp() {
           <span>Settings</span>
         </button>
       </nav>
+
+            {/* Slide-over Drawer for Mobile & Tablet Right Section */}
+      {isRightDrawerOpen && (
+        <div className="fixed inset-0 z-50 xl:hidden">
+          {/* Backdrop */}
+          <div
+            onClick={() => setIsRightDrawerOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-in fade-in"
+          />
+
+          {/* Drawer Panel */}
+          <div className="fixed inset-y-0 right-0 max-w-full w-full sm:w-100 bg-[#fafafa] dark:bg-[#09090b] shadow-2xl border-l border-neutral-300 dark:border-neutral-800 z-10 flex flex-col overflow-y-auto animate-in slide-in-from-right duration-200">
+            <RightUtilityRail
+              sprint={activeSprint}
+              pinnedResources={pinnedResources}
+              onOpenResource={(res) => {
+                setIsRightDrawerOpen(false)
+                handleOpenResource(res)
+              }}
+              isDrawer={true}
+              onClose={() => setIsRightDrawerOpen(false)}
+            />
+          </div>
+        </div>
+      )}
 
       {/* Media Modal */}
       <MediaModal card={activeMediaCard} onClose={() => setActiveMediaCard(null)} />

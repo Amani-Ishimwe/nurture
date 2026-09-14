@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from 'next'
+// Next.js processes this global stylesheet at build time.
+// @ts-expect-error No TypeScript declarations are emitted for global CSS side-effect imports.
 import './globals.css'
 import { ThemeProvider } from '@/context/ThemeContext'
 

@@ -193,7 +193,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
       <div className="flex items-center gap-1.5 p-1 rounded-lg glass-panel-sharp border border-neutral-300 dark:border-neutral-800 overflow-x-auto">
         <button
           onClick={() => setActiveAdminTab('sprint')}
-          className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+          className={`flex-1 min-w-32.5 py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'sprint'
               ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
               : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
@@ -205,7 +205,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
         <button
           onClick={() => setActiveAdminTab('meeting')}
-          className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+          className={`flex-1 min-w-32.5 py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'meeting'
               ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
               : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
@@ -217,7 +217,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
         <button
           onClick={() => setActiveAdminTab('moderation')}
-          className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+          className={`flex-1 min-w-32.5 py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'moderation'
               ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
               : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
@@ -229,7 +229,7 @@ ${pinnedPosts.map((p) => `- **${p.author.name} (${p.author.role}):** "${p.conten
 
         <button
           onClick={() => setActiveAdminTab('analytics')}
-          className={`flex-1 min-w-[130px] py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+          className={`flex-1 min-w-32.5 py-2 px-3 rounded-md text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeAdminTab === 'analytics'
               ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs'
               : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
